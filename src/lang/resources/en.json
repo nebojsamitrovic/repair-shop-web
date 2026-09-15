@@ -1,0 +1,480 @@
+{
+    "onboarding": {
+        "title": "One more step",
+        "description": "Your Firebase account has no application account yet.",
+        "company_hint": "Fill this in only if you are starting a new garage. If you were invited, leave it empty.",
+        "submit": "Create account"
+    },
+    "actions": {
+        "clear": "Clear filters",
+        "sign_out": "Sign out",
+        "toggle_menu": "Toggle menu",
+        "back_home": "Back to dashboard",
+        "change_language": "Change language",
+        "save": "Save",
+        "cancel": "Cancel",
+        "edit": "Edit",
+        "remove": "Remove"
+    },
+    "validation": {
+        "required": "This field is required.",
+        "email": "Enter a valid email address.",
+        "alphanumeric": "Letters and digits only."
+    },
+    "language": {
+        "label": "Language",
+        "sr": "Serbian",
+        "en": "English"
+    },
+    "notifications": {
+        "unread": "{{count}} unread",
+        "mark_read": "Mark read",
+        "mark_all_read": "Mark all as read",
+        "all_read": "Everything marked as read."
+    },
+    "users": {
+        "subtitle": "{{count}} users",
+        "search_placeholder": "Name or email",
+        "roles_changed": "Roles changed."
+    },
+    "invitations": {
+        "subtitle": "{{count}} invitations",
+        "invite": "Invite",
+        "send": "Send",
+        "sent": "Invitation sent.",
+        "revoke": "Revoke",
+        "revoked": "Invitation revoked.",
+        "confirm_revoke": "Revoke this invitation?"
+    },
+    "roles": {
+        "subtitle": "{{count}} roles",
+        "add": "New role",
+        "add_hint": "Every role here belongs to this garage alone. Copying an existing one is the usual start: take the closest role, then take rights away.",
+        "created": "Role created.",
+        "saved": "Permissions saved.",
+        "copy": "Copy this role",
+        "copy_from": "Start from",
+        "code_hint": "Letters, digits and underscores, e.g. SERVICE_ADVISOR",
+        "own": "Added",
+        "permission_count": "{{count}} permissions",
+        "reset": "Undo changes"
+    },
+    "audit": {
+        "subtitle": "{{count}} entries",
+        "search_placeholder": "Action, e.g. USER_ROLE_CHANGED"
+    },
+    "fields": {
+        "email": "Email",
+        "password": "Password",
+        "first_name": "First name",
+        "last_name": "Last name",
+        "company_name": "Garage name",
+        "vehicle": "Vehicle",
+        "vin": "VIN",
+        "stock_number": "Stock number",
+        "model_year": "Year",
+        "mileage": "Mileage",
+        "fuel_type": "Fuel",
+        "transmission": "Transmission",
+        "color": "Colour",
+        "status": "Status",
+        "selling_price": "Selling price",
+        "min_price": "Price from",
+        "max_price": "Price to",
+        "total_cost": "Total cost",
+        "profit": "Profit",
+        "margin": "Margin",
+        "days_in_stock": "Days in stock",
+        "purchased_at": "Purchased",
+        "incurred_at": "Date",
+        "amount": "Amount",
+        "type": "Type",
+        "description": "Description",
+        "salesperson": "Salesperson",
+        "sales": "Sales",
+        "make": "Make",
+        "name": "Name",
+        "phone": "Phone",
+        "notes": "Notes",
+        "created_at": "Created",
+        "scheduled_at": "When",
+        "customer": "Customer",
+        "valid_until": "Valid until",
+        "sold_at": "Sold",
+        "sale_price": "Sale price",
+        "roles": "Roles",
+        "role": "Role",
+        "expires_at": "Expires",
+        "when": "When",
+        "action": "Action",
+        "entity": "Entity",
+        "change": "Change",
+        "model": "Model",
+        "version": "Version",
+        "power_kw": "Power (kW)",
+        "capacity_ccm": "Capacity (ccm)",
+        "purchase_price": "Purchase price",
+        "source": "Source",
+        "sent_at": "Sent",
+        "resolved_at": "Resolved",
+        "estimated_price": "Estimated price",
+        "recommended_price": "Recommended price",
+        "asking_price": "Currently asking",
+        "price_gap": "Gap to estimate",
+        "expected_profit": "Expected profit",
+        "confidence": "Confidence",
+        "basis_price": "Basis price",
+        "adjusted_price": "Adjusted price",
+        "age_adjustment": "Year",
+        "mileage_adjustment": "Mileage",
+        "basis": "Basis",
+        "storage_key": "Storage key",
+        "file_name": "File name",
+        "content_type": "Type",
+        "size": "Size",
+        "sort_order": "Order",
+        "lead": "Lead",
+        "code": "Code",
+        "storage_folder": "Storage folder",
+        "odometer": "Odometer",
+        "summary": "What is being done",
+        "closing_note": "Closing note",
+        "mechanic": "Mechanic",
+        "opened_at": "Opened",
+        "hours": "Hours",
+        "hourly_rate": "Hourly rate",
+        "quantity": "Quantity",
+        "unit_price": "Unit price",
+        "total": "Total",
+        "supplier": "Supplier",
+        "supplier_invoice": "Their invoice",
+        "severity": "Severity",
+        "allowance": "Credited for it",
+        "market_value": "What it is worth",
+        "amount_due": "Left to pay",
+        "offer": "Offer",
+        "company": "Company",
+        "language": "Language",
+        "vehicles": "Vehicles",
+        "plate": "Plate",
+        "engine": "Engine",
+        "mileage_recorded_at": "Reading taken on",
+        "annual_mileage": "Yearly distance",
+        "location": "Location",
+        "address": "Address",
+        "city": "City",
+        "fixed_rate": "Fixed amount",
+        "currency": "Currency",
+        "closed_at": "Closed",
+        "title": "Title",
+        "body": "Text",
+        "tags": "Tags"
+    },
+    "errors": {
+        "AUTH_NOT_CONFIGURED": "The backend has no Firebase credentials configured, so nobody can sign in.",
+        "CONCURRENT_MODIFICATION": "Somebody else changed this record in the meantime. Reload and try again.",
+        "LAST_OWNER": "The garage must keep at least one owner.",
+        "NETWORK_ERROR": "The backend is unreachable.",
+        "UNEXPECTED_ERROR": "Something unexpected went wrong.",
+        "PLATE_ALREADY_REGISTERED": "A car with this plate is already registered here.",
+        "STORAGE_NOT_CONFIGURED": "No file storage is configured, so files cannot be uploaded.",
+        "MILEAGE_WENT_BACKWARDS": "The reading is lower than the last one recorded for this car.",
+        "ANNUAL_MILEAGE_REQUIRED": "A service needs the car's yearly distance — that is what the reminder is built on.",
+        "MILEAGE_REQUIRED": "A service has to record the mileage it was done at.",
+        "NOT_A_MECHANIC": "Only a colleague holding the MECHANIC role can be handed the work.",
+        "CUSTOMER_HAS_VEHICLES": "Remove or reassign the customer's cars first.",
+        "LAST_LOCATION": "A garage needs at least one open location.",
+        "BIG_SERVICE_TOO_SOON": "The major service cannot come more often than the small one.",
+        "SERVICE_ORDER_CLOSED": "This order is closed and no longer changes.",
+        "SERVICE_ORDER_DONE": "Finished work is history and cannot be removed.",
+        "CANCELLATION_REASON_REQUIRED": "Say why the order is being cancelled.",
+        "PERMISSION_DENIED": "You are not allowed to do this."
+    },
+    "enums": {
+        "user_status": {
+            "ACTIVE": "Active",
+            "SUSPENDED": "Suspended"
+        },
+        "fuel_type": {
+            "PETROL": "Petrol",
+            "DIESEL": "Diesel",
+            "HYBRID": "Hybrid",
+            "ELECTRIC": "Electric",
+            "LPG": "LPG",
+            "CNG": "CNG",
+            "OTHER": "Other"
+        },
+        "service_type": {
+            "SMALL_SERVICE": "Small service",
+            "BIG_SERVICE": "Major service",
+            "REPAIR": "Repair"
+        },
+        "service_order_status": {
+            "OPEN": "Open",
+            "IN_PROGRESS": "In progress",
+            "DONE": "Done",
+            "CANCELLED": "Cancelled"
+        },
+        "service_item_kind": {
+            "PART": "Part",
+            "CONSUMABLE": "Consumable",
+            "EXTERNAL": "Sent out",
+            "OTHER": "Other"
+        },
+        "attachment_kind": {
+            "FAULT_PHOTO": "Photo of the fault",
+            "INVOICE": "Invoice",
+            "DOCUMENT": "Document"
+        },
+        "labour_pricing_mode": {
+            "HOURLY": "Per hour",
+            "FIXED": "Fixed amount"
+        },
+        "locale": {
+            "sr": "Serbian",
+            "en": "English"
+        }
+    },
+    "_replace": [
+        ["garage", "garage"],
+        ["Garage", "Garage"]
+    ],
+    "nav": {
+        "workshop": "Workshop",
+        "vehicles": "Vehicles",
+        "customers": "Customers",
+        "notes": "Notebook",
+        "settings": "Settings",
+        "garage": "Garage",
+        "locations": "Locations",
+        "users": "Users",
+        "roles": "Roles",
+        "invitations": "Invitations",
+        "audit_log": "Audit log",
+        "notifications": "Notifications"
+    },
+    "pages": {
+        "login": {
+            "title": "Sign in"
+        },
+        "onboarding": {
+            "title": "Set up your account"
+        },
+        "workshop": {
+            "title": "Workshop"
+        },
+        "vehicles": {
+            "title": "Vehicles"
+        },
+        "vehicle": {
+            "title": "Vehicle"
+        },
+        "vehicle_new": {
+            "title": "New vehicle"
+        },
+        "customers": {
+            "title": "Customers"
+        },
+        "customer": {
+            "title": "Customer"
+        },
+        "notes": {
+            "title": "Notebook"
+        },
+        "notifications": {
+            "title": "Notifications"
+        },
+        "garage": {
+            "title": "Garage settings"
+        },
+        "locations": {
+            "title": "Locations"
+        },
+        "roles": {
+            "title": "Roles"
+        },
+        "users": {
+            "title": "Users"
+        },
+        "invitations": {
+            "title": "Invitations"
+        },
+        "audit_log": {
+            "title": "Audit log"
+        },
+        "forbidden": {
+            "title": "No access",
+            "description": "You are not allowed on this page."
+        },
+        "not_found": {
+            "title": "Not found",
+            "description": "This page does not exist."
+        }
+    },
+    "login": {
+        "title": "Sign in",
+        "submit": "Sign in",
+        "failed": "Wrong email address or password.",
+        "lead": "Your garage account.",
+        "headline": "The cars, the work and the customers who come back.",
+        "subheadline": "Every car's service history, every job priced your way, and a reminder to the customer before the next one is due.",
+        "invite_only": "Accounts are created by invitation — ask the owner of your garage for one.",
+        "footnote": "RepairShop OS — the workshop, the customers and the reminders, for garages.",
+        "highlights": {
+            "workshop": {
+                "title": "The workshop, priced your way",
+                "body": "Small and major services and repairs, labour per hour or flat, parts, photographs and invoices on every order, and a quote to print."
+            },
+            "reminders": {
+                "title": "Customers who come back",
+                "body": "From the mileage and how far they drive in a year, the car says when its next service falls — and the customer hears about it in time."
+            },
+            "notebook": {
+                "title": "The mechanics' notebook",
+                "body": "How that job on that car is done, with the pictures and documents, found again by make and model."
+            }
+        }
+    },
+    "customers": {
+        "subtitle": "{{count}} customers",
+        "add": "New customer",
+        "edit": "Edit customer",
+        "search_placeholder": "Name, company, email or phone",
+        "saved": "Customer saved.",
+        "deleted": "Customer deleted.",
+        "confirm_delete": "Delete this customer?",
+        "details": "Details",
+        "vehicles": "Their cars",
+        "no_vehicles": "No cars registered yet.",
+        "company_hint": "For a company car: the company is named on the quote and the person, if given, in brackets.",
+        "email_hint": "Where the service reminders go. Without it the customer is not written to.",
+        "locale_hint": "The language reminders and the quote are written in.",
+        "locale_default": "The garage's language"
+    },
+    "vehicles": {
+        "subtitle": "{{count}} cars",
+        "add": "New vehicle",
+        "edit": "Edit vehicle",
+        "search_placeholder": "Plate, VIN, make or model",
+        "new_hint": "The plate identifies the car. The reading and the yearly distance are what the next service is forecast from.",
+        "plate_hint": "Spaces and dashes do not matter: BG 123-AB and bg123ab are the same car.",
+        "reading_today": "Today when left empty.",
+        "annual_hint": "Roughly how many kilometres the car does in a year. Asked again at every service.",
+        "saved": "Vehicle saved.",
+        "deleted": "Vehicle removed.",
+        "confirm_delete": "Remove this car? Its orders stay on record.",
+        "details": "Details",
+        "history": "Service history",
+        "record_mileage": "Record a reading",
+        "mileage_recorded": "Reading recorded.",
+        "maintenance": {
+            "title": "Maintenance",
+            "no_history": "No service on record yet. The forecast starts with the first finished service.",
+            "next": "Next: {{type}} at {{km}} km",
+            "expected": "Expected around {{date}}. The customer is emailed two weeks before.",
+            "no_date": "No date without a yearly distance and a reading.",
+            "intervals": "Intervals (small / major)",
+            "last_small": "Last small service",
+            "last_big": "Last major service",
+            "next_small": "Next small service",
+            "next_big": "Next major service",
+            "reminders": "Reminders sent",
+            "no_reminders": "Nothing sent yet.",
+            "sent_at": "sent {{date}}"
+        }
+    },
+    "workshop": {
+        "subtitle": "{{count}} orders",
+        "order": "Service order",
+        "open_order": "New order",
+        "open_hint": "Taking a car in. A service asks the yearly distance, because that is what the next reminder is built on.",
+        "opened": "Order opened.",
+        "saved": "Order saved.",
+        "status_changed": "Order updated.",
+        "in_the_shop": "In the shop",
+        "mine": "Mine",
+        "all": "All",
+        "any_type": "Any",
+        "mechanic_hint": "Leave empty to take the job yourself; otherwise a colleague holding the MECHANIC role.",
+        "mechanic_me": "Me",
+        "annual_required": "A service needs the yearly distance.",
+        "labour": "Labour",
+        "labour_cost": "Labour cost",
+        "labour_hint": "Hours times the rate, or the fixed amount once any hours are recorded. Copied from the garage settings when the order was opened; change it here for this order only.",
+        "items": "Parts and other lines",
+        "add_item": "Add",
+        "no_items": "Nothing on this order yet.",
+        "no_orders": "This car has not been in yet.",
+        "parts_total": "Parts",
+        "print_quote": "Quote",
+        "confirm_cancel": "Why is this order being cancelled?",
+        "reason_placeholder": "A sentence is enough — it stays on the record.",
+        "transition": {
+            "IN_PROGRESS": "Start work",
+            "DONE": "Finish",
+            "CANCELLED": "Cancel"
+        }
+    },
+    "attachments": {
+        "title": "Files",
+        "hint": "Photographs of the fault, the parts invoice, a diagnostic printout.",
+        "attach": "Attach",
+        "attach_count": "Attach {{count}}",
+        "empty": "No files.",
+        "pick_file": "Choose files",
+        "limits": "Images and PDF, up to 20 MB each",
+        "added": "{{count}} files attached.",
+        "removed": "File removed.",
+        "confirm_remove": "Remove this file?",
+        "upload_failed": "Storage refused {{name}}. Nothing was recorded for it."
+    },
+    "notes": {
+        "subtitle": "{{count}} notes",
+        "note": "Note",
+        "add": "New note",
+        "search_placeholder": "Title, text, tags",
+        "mine": "Only mine",
+        "empty": "Nothing written yet.",
+        "saved": "Note saved.",
+        "deleted": "Note removed.",
+        "confirm_delete": "Remove this note and its files?",
+        "by": "{{name}} · {{date}}",
+        "vehicle_hint": "When the note is about one particular car rather than a type.",
+        "tags_hint": "Comma-separated, e.g. dsg, mechatronics",
+        "limits": "Images, PDF, text and office documents, up to 20 MB each"
+    },
+    "garage": {
+        "subtitle": "What holds for the whole garage: service intervals, the price of work, the language customers are written in.",
+        "saved": "Settings saved.",
+        "intervals": {
+            "title": "Service intervals",
+            "hint": "How far a car goes between small services and between major ones. The reminders are built on these.",
+            "small": "Small service every",
+            "big": "Major service every"
+        },
+        "pricing": {
+            "title": "Labour pricing",
+            "hint": "Per hour, or one fixed amount per job. An order copies the pricing when it is opened, so changing it here never reprices old work.",
+            "mode": "Pricing",
+            "active": "In effect: {{mode}}, {{rate}}"
+        },
+        "contact": {
+            "title": "Language and contact",
+            "hint": "New customers get this language unless they say otherwise. The phone and email are printed in every reminder.",
+            "default_language": "Default language"
+        }
+    },
+    "locations": {
+        "subtitle": "Where the garage works. Every order names one.",
+        "add": "New location",
+        "edit": "Edit location",
+        "saved": "Location saved.",
+        "empty": "No locations yet — a \"Main\" one is created with the first order.",
+        "open": "Open",
+        "closed": "Closed",
+        "close": "Close",
+        "reopen": "Reopen",
+        "confirm_close": "Close this location? Its orders stay on record.",
+        "confirm_reopen": "Reopen this location?"
+    }
+}

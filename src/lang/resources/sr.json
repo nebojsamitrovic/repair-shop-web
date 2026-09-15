@@ -1,0 +1,483 @@
+{
+    "onboarding": {
+        "title": "Još jedan korak",
+        "description": "Vaš Firebase nalog još nema nalog u aplikaciji.",
+        "company_hint": "Popunite samo ako otvarate novu servis. Ako ste pozvani, ostavite prazno.",
+        "submit": "Otvori nalog"
+    },
+    "actions": {
+        "clear": "Poništi filtere",
+        "sign_out": "Odjava",
+        "toggle_menu": "Prikaži/sakrij meni",
+        "back_home": "Nazad na pregled",
+        "change_language": "Promeni jezik",
+        "save": "Sačuvaj",
+        "cancel": "Odustani",
+        "edit": "Izmeni",
+        "remove": "Ukloni"
+    },
+    "validation": {
+        "required": "Obavezno polje.",
+        "email": "Unesite ispravnu email adresu.",
+        "alphanumeric": "Samo slova i cifre."
+    },
+    "language": {
+        "label": "Jezik",
+        "sr": "Srpski",
+        "en": "Engleski"
+    },
+    "notifications": {
+        "unread": "{{count}} nepročitanih",
+        "mark_read": "Pročitano",
+        "mark_all_read": "Označi sve kao pročitano",
+        "all_read": "Sve je označeno kao pročitano."
+    },
+    "users": {
+        "subtitle": "{{count}} korisnika",
+        "search_placeholder": "Ime ili email",
+        "roles_changed": "Role su promenjene."
+    },
+    "invitations": {
+        "subtitle": "{{count}} pozivnica",
+        "invite": "Pozovi",
+        "send": "Pošalji",
+        "sent": "Pozivnica je poslata.",
+        "revoke": "Povuci",
+        "revoked": "Pozivnica je povučena.",
+        "confirm_revoke": "Povući ovu pozivnicu?"
+    },
+    "roles": {
+        "subtitle": "rola: {{count}}",
+        "add": "Nova rola",
+        "add_hint": "Sve role ovde pripadaju samo ovoj kući. Kopiranje postojeće je uobičajen početak: uzmi najbližu rolu, pa joj oduzmi prava.",
+        "created": "Rola je napravljena.",
+        "saved": "Permisije su sačuvane.",
+        "copy": "Kopiraj ovu rolu",
+        "copy_from": "Kreni od",
+        "code_hint": "Slova, cifre i donja crta, npr. SERVICE_ADVISOR",
+        "own": "Dodata",
+        "permission_count": "permisija: {{count}}",
+        "reset": "Poništi izmene"
+    },
+    "audit": {
+        "subtitle": "{{count}} zapisa",
+        "search_placeholder": "Akcija, npr. USER_ROLE_CHANGED"
+    },
+    "fields": {
+        "email": "Email",
+        "password": "Lozinka",
+        "first_name": "Ime",
+        "last_name": "Prezime",
+        "company_name": "Naziv servisa",
+        "vehicle": "Vozilo",
+        "vin": "VIN",
+        "stock_number": "Broj u stanju",
+        "model_year": "Godište",
+        "mileage": "Kilometraža",
+        "fuel_type": "Gorivo",
+        "transmission": "Menjač",
+        "color": "Boja",
+        "status": "Status",
+        "selling_price": "Prodajna cena",
+        "min_price": "Cena od",
+        "max_price": "Cena do",
+        "total_cost": "Ukupan trošak",
+        "profit": "Profit",
+        "margin": "Marža",
+        "days_in_stock": "Dana u stanju",
+        "purchased_at": "Nabavljeno",
+        "incurred_at": "Datum",
+        "amount": "Iznos",
+        "type": "Tip",
+        "description": "Opis",
+        "salesperson": "Prodavac",
+        "sales": "Prodaja",
+        "make": "Marka",
+        "name": "Naziv",
+        "phone": "Telefon",
+        "notes": "Napomene",
+        "created_at": "Kreiran",
+        "scheduled_at": "Termin",
+        "customer": "Kupac",
+        "valid_until": "Važi do",
+        "sold_at": "Prodato",
+        "sale_price": "Prodajna cena",
+        "roles": "Role",
+        "role": "Rola",
+        "expires_at": "Ističe",
+        "when": "Vreme",
+        "action": "Akcija",
+        "entity": "Entitet",
+        "change": "Promena",
+        "model": "Model",
+        "version": "Verzija",
+        "power_kw": "Snaga (kW)",
+        "capacity_ccm": "Zapremina (ccm)",
+        "purchase_price": "Nabavna cena",
+        "source": "Izvor",
+        "sent_at": "Poslato",
+        "resolved_at": "Rešeno",
+        "estimated_price": "Procenjena cena",
+        "recommended_price": "Preporučena cena",
+        "asking_price": "Trenutno se traži",
+        "price_gap": "Razlika do procene",
+        "expected_profit": "Očekivani profit",
+        "confidence": "Pouzdanost",
+        "basis_price": "Osnovna cena",
+        "adjusted_price": "Korigovana cena",
+        "age_adjustment": "Godište",
+        "mileage_adjustment": "Kilometraža",
+        "basis": "Osnova",
+        "storage_key": "Ključ u skladištu",
+        "file_name": "Naziv fajla",
+        "content_type": "Tip",
+        "size": "Veličina",
+        "sort_order": "Redosled",
+        "lead": "Lead",
+        "code": "Kod",
+        "storage_folder": "Folder u skladištu",
+        "odometer": "Kilometraža na prijemu",
+        "summary": "Šta se radi",
+        "closing_note": "Napomena pri zatvaranju",
+        "mechanic": "Mehaničar",
+        "opened_at": "Otvoren",
+        "hours": "Sati",
+        "hourly_rate": "Cena sata",
+        "quantity": "Količina",
+        "unit_price": "Cena po jedinici",
+        "total": "Ukupno",
+        "supplier": "Dobavljač",
+        "supplier_invoice": "Njihov račun",
+        "severity": "Težina",
+        "allowance": "Priznato za njega",
+        "market_value": "Koliko vredi",
+        "amount_due": "Ostaje da se plati",
+        "offer": "Ponuda",
+        "company": "Firma",
+        "language": "Jezik",
+        "vehicles": "Vozila",
+        "plate": "Tablice",
+        "engine": "Motor",
+        "mileage_recorded_at": "Datum očitavanja",
+        "annual_mileage": "Godišnja kilometraža",
+        "location": "Objekat",
+        "address": "Adresa",
+        "city": "Grad",
+        "fixed_rate": "Fiksni iznos",
+        "currency": "Valuta",
+        "closed_at": "Zatvoren",
+        "title": "Naslov",
+        "body": "Tekst",
+        "tags": "Oznake"
+    },
+    "errors": {
+        "AUTH_NOT_CONFIGURED": "Backend nema podešene Firebase kredencijale, pa niko ne može da se prijavi.",
+        "CONCURRENT_MODIFICATION": "Neko je u međuvremenu izmenio ovaj zapis. Osvežite i pokušajte ponovo.",
+        "LAST_OWNER": "Servis mora da ima bar jednog vlasnika.",
+        "NETWORK_ERROR": "Backend nije dostupan.",
+        "UNEXPECTED_ERROR": "Došlo je do neočekivane greške.",
+        "PLATE_ALREADY_REGISTERED": "Vozilo sa ovim tablicama je već registrovano.",
+        "STORAGE_NOT_CONFIGURED": "Skladište fajlova nije podešeno, pa fajlovi ne mogu da se otpreme.",
+        "MILEAGE_WENT_BACKWARDS": "Očitana kilometraža je manja od poslednje zabeležene.",
+        "ANNUAL_MILEAGE_REQUIRED": "Za servis je potrebna godišnja kilometraža — na njoj se gradi podsetnik.",
+        "MILEAGE_REQUIRED": "Servis mora da zabeleži kilometražu na kojoj je urađen.",
+        "NOT_A_MECHANIC": "Posao može da se dodeli samo kolegi sa rolom MECHANIC.",
+        "CUSTOMER_HAS_VEHICLES": "Prvo uklonite ili prebacite vozila ovog kupca.",
+        "LAST_LOCATION": "Servis mora da ima bar jedan otvoren objekat.",
+        "BIG_SERVICE_TOO_SOON": "Veliki servis ne može da bude češći od malog.",
+        "SERVICE_ORDER_CLOSED": "Ovaj nalog je zatvoren i više se ne menja.",
+        "SERVICE_ORDER_DONE": "Završen posao je istorija i ne može da se obriše.",
+        "CANCELLATION_REASON_REQUIRED": "Navedite zašto se nalog otkazuje.",
+        "PERMISSION_DENIED": "Nemate dozvolu za ovo."
+    },
+    "enums": {
+        "user_status": {
+            "ACTIVE": "Aktivan",
+            "SUSPENDED": "Suspendovan"
+        },
+        "fuel_type": {
+            "PETROL": "Benzin",
+            "DIESEL": "Dizel",
+            "HYBRID": "Hibrid",
+            "ELECTRIC": "Struja",
+            "LPG": "TNG",
+            "CNG": "CNG",
+            "OTHER": "Ostalo"
+        },
+        "service_type": {
+            "SMALL_SERVICE": "Mali servis",
+            "BIG_SERVICE": "Veliki servis",
+            "REPAIR": "Popravka"
+        },
+        "service_order_status": {
+            "OPEN": "Otvoren",
+            "IN_PROGRESS": "U radu",
+            "DONE": "Završen",
+            "CANCELLED": "Otkazan"
+        },
+        "service_item_kind": {
+            "PART": "Deo",
+            "CONSUMABLE": "Potrošni materijal",
+            "EXTERNAL": "Poslato spolja",
+            "OTHER": "Ostalo"
+        },
+        "attachment_kind": {
+            "FAULT_PHOTO": "Slika kvara",
+            "INVOICE": "Račun",
+            "DOCUMENT": "Dokument"
+        },
+        "labour_pricing_mode": {
+            "HOURLY": "Po satu",
+            "FIXED": "Fiksno"
+        },
+        "locale": {
+            "sr": "Srpski",
+            "en": "Engleski"
+        }
+    },
+    "_replace": [
+        ["servisa", "servisa"],
+        ["servis", "servis"],
+        ["servis", "servis"],
+        ["Servis", "Servis"],
+        ["servis", "servis"]
+    ],
+    "nav": {
+        "workshop": "Radionica",
+        "vehicles": "Vozila",
+        "customers": "Kupci",
+        "notes": "Beležnica",
+        "settings": "Podešavanja",
+        "garage": "Servis",
+        "locations": "Objekti",
+        "users": "Korisnici",
+        "roles": "Role",
+        "invitations": "Pozivnice",
+        "audit_log": "Istorija izmena",
+        "notifications": "Obaveštenja"
+    },
+    "pages": {
+        "login": {
+            "title": "Prijava"
+        },
+        "onboarding": {
+            "title": "Podesite nalog"
+        },
+        "workshop": {
+            "title": "Radionica"
+        },
+        "vehicles": {
+            "title": "Vozila"
+        },
+        "vehicle": {
+            "title": "Vozilo"
+        },
+        "vehicle_new": {
+            "title": "Novo vozilo"
+        },
+        "customers": {
+            "title": "Kupci"
+        },
+        "customer": {
+            "title": "Kupac"
+        },
+        "notes": {
+            "title": "Beležnica"
+        },
+        "notifications": {
+            "title": "Obaveštenja"
+        },
+        "garage": {
+            "title": "Podešavanja servisa"
+        },
+        "locations": {
+            "title": "Objekti"
+        },
+        "roles": {
+            "title": "Role"
+        },
+        "users": {
+            "title": "Korisnici"
+        },
+        "invitations": {
+            "title": "Pozivnice"
+        },
+        "audit_log": {
+            "title": "Istorija izmena"
+        },
+        "forbidden": {
+            "title": "Nemate pristup",
+            "description": "Nije vam dozvoljen pristup ovoj strani."
+        },
+        "not_found": {
+            "title": "Nije pronađeno",
+            "description": "Ova strana ne postoji."
+        }
+    },
+    "login": {
+        "title": "Prijava",
+        "submit": "Prijavi se",
+        "failed": "Pogrešna adresa ili lozinka.",
+        "lead": "Nalog vašeg servisa.",
+        "headline": "Vozila, radovi i kupci koji se vraćaju.",
+        "subheadline": "Istorija servisa svakog vozila, svaki posao naplaćen kako vi radite, i podsetnik kupcu pre nego što stigne sledeći servis.",
+        "invite_only": "Nalozi se otvaraju pozivnicom — zatražite je od vlasnika servisa.",
+        "footnote": "RepairShop OS — radionica, kupci i podsetnici, za auto-servise.",
+        "highlights": {
+            "workshop": {
+                "title": "Radionica, naplaćena kako vi radite",
+                "body": "Mali i veliki servisi i popravke, rad po satu ili fiksno, delovi, slike i računi na svakom nalogu, i predračun za štampu."
+            },
+            "reminders": {
+                "title": "Kupci koji se vraćaju",
+                "body": "Iz kilometraže i godišnje pređenog puta vozilo samo kaže kada mu stiže sledeći servis — a kupac to sazna na vreme."
+            },
+            "notebook": {
+                "title": "Beležnica mehaničara",
+                "body": "Kako se koji posao radi na kom autu, sa slikama i dokumentima, i nađe se ponovo po marki i modelu."
+            }
+        }
+    },
+    "customers": {
+        "subtitle": "{{count}} kupaca",
+        "add": "Novi kupac",
+        "edit": "Izmeni kupca",
+        "search_placeholder": "Ime, firma, email ili telefon",
+        "saved": "Kupac sačuvan.",
+        "deleted": "Kupac obrisan.",
+        "confirm_delete": "Obrisati ovog kupca?",
+        "details": "Podaci",
+        "vehicles": "Njegova vozila",
+        "no_vehicles": "Još nema registrovanih vozila.",
+        "company_hint": "Za službeno vozilo: firma se piše na predračunu, a osoba, ako je uneta, u zagradi.",
+        "email_hint": "Ovde stižu podsetnici za servis. Bez adrese kupcu se ne piše.",
+        "locale_hint": "Jezik na kom se pišu podsetnici i predračun.",
+        "locale_default": "Jezik servisa"
+    },
+    "vehicles": {
+        "subtitle": "{{count}} vozila",
+        "add": "Novo vozilo",
+        "edit": "Izmeni vozilo",
+        "search_placeholder": "Tablice, VIN, marka ili model",
+        "new_hint": "Tablice identifikuju vozilo. Kilometraža i godišnji pređeni put su ono iz čega se računa sledeći servis.",
+        "plate_hint": "Razmaci i crtice nisu bitni: BG 123-AB i bg123ab su isto vozilo.",
+        "reading_today": "Danas, ako ostavite prazno.",
+        "annual_hint": "Otprilike koliko kilometara vozilo pređe godišnje. Pita se ponovo na svakom servisu.",
+        "saved": "Vozilo sačuvano.",
+        "deleted": "Vozilo uklonjeno.",
+        "confirm_delete": "Ukloniti ovo vozilo? Nalozi ostaju zabeleženi.",
+        "details": "Podaci",
+        "history": "Istorija servisa",
+        "record_mileage": "Unesi kilometražu",
+        "mileage_recorded": "Kilometraža zabeležena.",
+        "maintenance": {
+            "title": "Održavanje",
+            "no_history": "Još nema zabeleženog servisa. Prognoza kreće od prvog završenog servisa.",
+            "next": "Sledeće: {{type}} na {{km}} km",
+            "expected": "Očekuje se oko {{date}}. Kupcu stiže mejl dve nedelje ranije.",
+            "no_date": "Nema datuma bez godišnje kilometraže i očitavanja.",
+            "intervals": "Intervali (mali / veliki)",
+            "last_small": "Poslednji mali servis",
+            "last_big": "Poslednji veliki servis",
+            "next_small": "Sledeći mali servis",
+            "next_big": "Sledeći veliki servis",
+            "reminders": "Poslati podsetnici",
+            "no_reminders": "Još ništa nije poslato.",
+            "sent_at": "poslato {{date}}"
+        }
+    },
+    "workshop": {
+        "subtitle": "{{count}} naloga",
+        "order": "Servisni nalog",
+        "open_order": "Novi nalog",
+        "open_hint": "Prijem vozila. Servis pita za godišnju kilometražu, jer se na njoj gradi sledeći podsetnik.",
+        "opened": "Nalog otvoren.",
+        "saved": "Nalog sačuvan.",
+        "status_changed": "Nalog ažuriran.",
+        "in_the_shop": "U radionici",
+        "mine": "Moji",
+        "all": "Svi",
+        "any_type": "Sve",
+        "mechanic_hint": "Ostavite prazno da posao preuzmete sami; inače kolega sa rolom MECHANIC.",
+        "mechanic_me": "Ja",
+        "annual_required": "Za servis je potrebna godišnja kilometraža.",
+        "labour": "Rad",
+        "labour_cost": "Cena rada",
+        "labour_hint": "Sati puta cena sata, ili fiksni iznos čim se upišu sati. Prepisano iz podešavanja servisa kad je nalog otvoren; ovde se menja samo za ovaj nalog.",
+        "items": "Delovi i ostale stavke",
+        "add_item": "Dodaj",
+        "no_items": "Na nalogu još nema ničega.",
+        "no_orders": "Ovo vozilo još nije bilo u radionici.",
+        "parts_total": "Delovi",
+        "print_quote": "Predračun",
+        "confirm_cancel": "Zašto se nalog otkazuje?",
+        "reason_placeholder": "Dovoljna je rečenica — ostaje zabeležena.",
+        "transition": {
+            "IN_PROGRESS": "Počni rad",
+            "DONE": "Završi",
+            "CANCELLED": "Otkaži"
+        }
+    },
+    "attachments": {
+        "title": "Fajlovi",
+        "hint": "Slike kvara, račun za delove, ispis dijagnostike.",
+        "attach": "Priloži",
+        "attach_count": "Priloži {{count}}",
+        "empty": "Nema fajlova.",
+        "pick_file": "Izaberite fajlove",
+        "limits": "Slike i PDF, do 20 MB po fajlu",
+        "added": "Priloženo fajlova: {{count}}.",
+        "removed": "Fajl uklonjen.",
+        "confirm_remove": "Ukloniti ovaj fajl?",
+        "upload_failed": "Skladište je odbilo {{name}}. Ništa nije zabeleženo."
+    },
+    "notes": {
+        "subtitle": "{{count}} beležaka",
+        "note": "Beleška",
+        "add": "Nova beleška",
+        "search_placeholder": "Naslov, tekst, oznake",
+        "mine": "Samo moje",
+        "empty": "Još ništa nije zapisano.",
+        "saved": "Beleška sačuvana.",
+        "deleted": "Beleška uklonjena.",
+        "confirm_delete": "Ukloniti ovu belešku i njene fajlove?",
+        "by": "{{name}} · {{date}}",
+        "vehicle_hint": "Kad je beleška o jednom konkretnom vozilu, a ne o tipu.",
+        "tags_hint": "Odvojene zarezom, npr. dsg, mehatronika",
+        "limits": "Slike, PDF, tekst i office dokumenti, do 20 MB po fajlu"
+    },
+    "garage": {
+        "subtitle": "Šta važi za ceo servis: intervali servisa, cena rada, jezik na kom se piše kupcima.",
+        "saved": "Podešavanja sačuvana.",
+        "intervals": {
+            "title": "Intervali servisa",
+            "hint": "Koliko vozilo pređe između malih i između velikih servisa. Na ovome se grade podsetnici.",
+            "small": "Mali servis na svakih",
+            "big": "Veliki servis na svakih"
+        },
+        "pricing": {
+            "title": "Cena rada",
+            "hint": "Po satu, ili jedan fiksni iznos po poslu. Nalog prepisuje cenu kad se otvori, pa izmena ovde nikad ne menja stare radove.",
+            "mode": "Način naplate",
+            "active": "Važi: {{mode}}, {{rate}}"
+        },
+        "contact": {
+            "title": "Jezik i kontakt",
+            "hint": "Novi kupci dobijaju ovaj jezik dok ne kažu drugačije. Telefon i email se štampaju u svakom podsetniku.",
+            "default_language": "Podrazumevani jezik"
+        }
+    },
+    "locations": {
+        "subtitle": "Gde servis radi. Svaki nalog imenuje jedan objekat.",
+        "add": "Novi objekat",
+        "edit": "Izmeni objekat",
+        "saved": "Objekat sačuvan.",
+        "empty": "Još nema objekata — „Main“ se pravi sa prvim nalogom.",
+        "open": "Otvoren",
+        "closed": "Zatvoren",
+        "close": "Zatvori",
+        "reopen": "Ponovo otvori",
+        "confirm_close": "Zatvoriti ovaj objekat? Nalozi ostaju zabeleženi.",
+        "confirm_reopen": "Ponovo otvoriti ovaj objekat?"
+    }
+}
