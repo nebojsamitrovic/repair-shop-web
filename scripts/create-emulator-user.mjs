@@ -32,7 +32,7 @@ const readEnv = () => {
 const env = readEnv()
 const host = env.VITE_FIREBASE_AUTH_EMULATOR_HOST || 'localhost:9099'
 const apiKey = env.VITE_FIREBASE_API_KEY || 'demo-key'
-const [email = 'marko@servismarko.rs', password = 'lozinka123'] = process.argv.slice(2)
+const [email = 'test@example.com', password = 'lozinka123'] = process.argv.slice(2)
 
 const url = `http://${host}/identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`
 

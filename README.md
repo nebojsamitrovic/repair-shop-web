@@ -56,7 +56,7 @@ npm run emulator                    # 2. Firebase Auth on :9099
 npm run dev                         # 4. this application on :5173
 ```
 
-Once, while the emulator is up: `npm run emulator:user` creates `marko@servismarko.rs` /
+Once, while the emulator is up: `npm run emulator:user` creates `test@example.com` /
 `lozinka123`. The first sign-in lands on onboarding, which creates the garage with you as OWNER.
 
 Other commands:
