@@ -168,7 +168,8 @@
         "closed_at": "Closed",
         "title": "Title",
         "body": "Text",
-        "tags": "Tags"
+        "tags": "Tags",
+        "part": "Part"
     },
     "errors": {
         "AUTH_NOT_CONFIGURED": "The backend has no Firebase credentials configured, so nobody can sign in.",
@@ -214,12 +215,6 @@
             "IN_PROGRESS": "In progress",
             "DONE": "Done",
             "CANCELLED": "Cancelled"
-        },
-        "service_item_kind": {
-            "PART": "Part",
-            "CONSUMABLE": "Consumable",
-            "EXTERNAL": "Sent out",
-            "OTHER": "Other"
         },
         "attachment_kind": {
             "FAULT_PHOTO": "Photo of the fault",
@@ -405,9 +400,6 @@
         "labour": "Labour",
         "labour_cost": "Labour cost",
         "labour_hint": "Hours times the rate, or the fixed amount once any hours are recorded. Copied from the garage settings when the order was opened; change it here for this order only.",
-        "items": "Parts and other lines",
-        "add_item": "Add",
-        "no_items": "Nothing on this order yet.",
         "no_orders": "This car has not been in yet.",
         "parts_total": "Parts",
         "print_quote": "Quote",
@@ -417,6 +409,21 @@
             "IN_PROGRESS": "Start work",
             "DONE": "Finish",
             "CANCELLED": "Cancel"
+        },
+        "parts": "Parts",
+        "parts_hint": "Filled in from what this service usually needs. Change, remove or add lines; prices are per piece.",
+        "no_parts": "No parts on this order.",
+        "add_part": "Add a part",
+        "save_parts": "Save parts",
+        "parts_template": {
+            "oil_filter": "Oil filter",
+            "oil": "Engine oil",
+            "air_filter": "Air filter",
+            "cabin_filter": "Cabin filter",
+            "fuel_filter": "Fuel filter",
+            "timing_belt_kit": "Timing belt kit",
+            "v_belt_kit": "V-ribbed belt kit",
+            "water_pump": "Water pump"
         }
     },
     "attachments": {

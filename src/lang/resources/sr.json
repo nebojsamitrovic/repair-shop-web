@@ -168,7 +168,8 @@
         "closed_at": "Zatvoren",
         "title": "Naslov",
         "body": "Tekst",
-        "tags": "Oznake"
+        "tags": "Oznake",
+        "part": "Deo"
     },
     "errors": {
         "AUTH_NOT_CONFIGURED": "Backend nema podešene Firebase kredencijale, pa niko ne može da se prijavi.",
@@ -214,12 +215,6 @@
             "IN_PROGRESS": "U radu",
             "DONE": "Završen",
             "CANCELLED": "Otkazan"
-        },
-        "service_item_kind": {
-            "PART": "Deo",
-            "CONSUMABLE": "Potrošni materijal",
-            "EXTERNAL": "Poslato spolja",
-            "OTHER": "Ostalo"
         },
         "attachment_kind": {
             "FAULT_PHOTO": "Slika kvara",
@@ -408,9 +403,6 @@
         "labour": "Rad",
         "labour_cost": "Cena rada",
         "labour_hint": "Sati puta cena sata, ili fiksni iznos čim se upišu sati. Prepisano iz podešavanja servisa kad je nalog otvoren; ovde se menja samo za ovaj nalog.",
-        "items": "Delovi i ostale stavke",
-        "add_item": "Dodaj",
-        "no_items": "Na nalogu još nema ničega.",
         "no_orders": "Ovo vozilo još nije bilo u radionici.",
         "parts_total": "Delovi",
         "print_quote": "Predračun",
@@ -420,6 +412,21 @@
             "IN_PROGRESS": "Počni rad",
             "DONE": "Završi",
             "CANCELLED": "Otkaži"
+        },
+        "parts": "Delovi",
+        "parts_hint": "Popunjeno onim što ovaj servis obično traži. Izmenite, uklonite ili dodajte stavke; cena je po komadu.",
+        "no_parts": "Na nalogu nema delova.",
+        "add_part": "Dodaj deo",
+        "save_parts": "Sačuvaj delove",
+        "parts_template": {
+            "oil_filter": "Filter ulja",
+            "oil": "Motorno ulje",
+            "air_filter": "Filter vazduha",
+            "cabin_filter": "Filter kabine",
+            "fuel_filter": "Filter goriva",
+            "timing_belt_kit": "Set zupčastog kaiša",
+            "v_belt_kit": "Set PK kaiša",
+            "water_pump": "Vodena pumpa"
         }
     },
     "attachments": {

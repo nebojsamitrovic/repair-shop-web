@@ -1,7 +1,6 @@
 import { api } from 'api/client'
 import type {
     AddAttachmentRequest,
-    AddServiceItemRequest,
     AttachmentUpload,
     OpenServiceOrderRequest,
     PageResponse,
@@ -22,10 +21,6 @@ export const workshopApi = {
         (await api.patch<ServiceOrderDetail>(`/service-orders/${orderId}`, body)).data,
     changeStatus: async (orderId: string, status: ServiceOrderStatus, note?: string) =>
         (await api.post<ServiceOrderDetail>(`/service-orders/${orderId}/status`, { status, note })).data,
-    addItem: async (orderId: string, body: AddServiceItemRequest) =>
-        (await api.post<ServiceOrderDetail>(`/service-orders/${orderId}/items`, body)).data,
-    removeItem: async (orderId: string, itemId: string) =>
-        (await api.delete<ServiceOrderDetail>(`/service-orders/${orderId}/items/${itemId}`)).data,
     presignAttachment: async (orderId: string, body: PresignAttachmentRequest) =>
         (await api.post<AttachmentUpload>(`/service-orders/${orderId}/attachments/upload-url`, body)).data,
     addAttachment: async (orderId: string, body: AddAttachmentRequest) =>

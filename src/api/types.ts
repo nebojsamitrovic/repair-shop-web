@@ -198,9 +198,6 @@ export interface RecordMileageRequest {
 export const SERVICE_ORDER_STATUSES = ['OPEN', 'IN_PROGRESS', 'DONE', 'CANCELLED'] as const
 export type ServiceOrderStatus = (typeof SERVICE_ORDER_STATUSES)[number]
 
-export const SERVICE_ITEM_KINDS = ['PART', 'CONSUMABLE', 'EXTERNAL', 'OTHER'] as const
-export type ServiceItemKind = (typeof SERVICE_ITEM_KINDS)[number]
-
 export const ATTACHMENT_KINDS = ['FAULT_PHOTO', 'INVOICE', 'DOCUMENT'] as const
 export type AttachmentKind = (typeof ATTACHMENT_KINDS)[number]
 
@@ -226,14 +223,19 @@ export interface ServiceOrderSummary {
     closedAt?: string | null
 }
 
-export interface ServiceItem {
-    id: string
-    kind: ServiceItemKind
+/** One line of parts. The amount is computed by the backend; the form only shows it. */
+export interface ServicePart {
     description: string
     quantity: number
     unitPrice: number
     amount: number
-    currency: string
+}
+
+/** What is sent: no amount, the backend computes it. */
+export interface ServicePartRequest {
+    description: string
+    quantity: number
+    unitPrice?: number
 }
 
 export interface ServiceAttachment {
@@ -279,7 +281,7 @@ export interface ServiceOrderDetail {
     allowedTransitions: ServiceOrderStatus[]
     labour: Labour
     partsTotal: number
-    items: ServiceItem[]
+    parts: ServicePart[]
     attachments: ServiceAttachment[]
 }
 
@@ -293,6 +295,7 @@ export interface OpenServiceOrderRequest {
     annualMileage?: number
     description?: string
     labourHours?: number
+    parts?: ServicePartRequest[]
 }
 
 export interface UpdateServiceOrderRequest {
@@ -304,13 +307,8 @@ export interface UpdateServiceOrderRequest {
     labourHours?: number
     labourPricingMode?: LabourPricingMode
     labourRate?: number
-}
-
-export interface AddServiceItemRequest {
-    kind: ServiceItemKind
-    description: string
-    quantity: number
-    unitPrice: number
+    /** Replaces the whole list when present. */
+    parts?: ServicePartRequest[]
 }
 
 export interface AddAttachmentRequest {

@@ -1,13 +1,16 @@
-import { Form, Input, InputNumber, Modal, Select, Typography } from 'antd'
+import { Divider, Form, Input, InputNumber, Modal, Select, Typography } from 'antd'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { SERVICE_TYPES, type OpenServiceOrderRequest, type ServiceOrderDetail, type ServiceType } from 'api/types'
 import { ErrorBlock } from 'components'
-import { useDirectory } from 'hooks'
 import useEnumLabel from 'lang/useEnumLabel'
+import { garageApi, garageKeys } from 'features/garage/utils/api'
+import { useDirectory, useQuery } from 'hooks'
 import useWorkshopMutation from '../hooks/useWorkshopMutation'
 import { workshopApi } from '../utils/api'
+import { partsTemplate } from '../utils/templates'
+import PartsEditor from './PartsEditor'
 
 interface Props {
     open: boolean
@@ -28,6 +31,7 @@ const OpenOrderModal = ({ open, vehicleId, onClose, onOpened }: Props) => {
     const { vehicles, locations, mechanics } = useDirectory()
     const type = Form.useWatch('type', form) as ServiceType | undefined
     const chosenVehicleId = Form.useWatch('vehicleId', form) as string | undefined
+    const settings = useQuery({ queryKey: garageKeys.settings, queryFn: garageApi.settings, staleTime: 5 * 60_000 })
 
     const create = useWorkshopMutation(
         async (body: OpenServiceOrderRequest) => await workshopApi.open(body),
@@ -41,8 +45,12 @@ const OpenOrderModal = ({ open, vehicleId, onClose, onOpened }: Props) => {
             vehicleId,
             type: 'SMALL_SERVICE',
             locationId: locations.length === 1 ? locations[0].id : undefined,
+            parts: partsTemplate('SMALL_SERVICE', t),
         })
-    }, [open, vehicleId, form, locations])
+    }, [open, vehicleId, form, locations, t])
+
+    /* The list follows the type: a service starts with what a service usually needs, a repair with nothing. */
+    const onTypeChange = (next: ServiceType) => form.setFieldValue('parts', partsTemplate(next, t))
 
     /* The car's last known figures, so the desk corrects rather than retypes. */
     useEffect(() => {
@@ -57,6 +65,7 @@ const OpenOrderModal = ({ open, vehicleId, onClose, onOpened }: Props) => {
     return (
         <Modal
             open={open}
+            width={720}
             title={t('workshop.open_order')}
             okText={t('workshop.open_order')}
             cancelText={t('actions.cancel')}
@@ -77,12 +86,15 @@ const OpenOrderModal = ({ open, vehicleId, onClose, onOpened }: Props) => {
                 layout={'vertical'}
                 requiredMark={false}
                 onFinish={(values) =>
-                    create.mutate(values, {
-                        onSuccess: (order) => {
-                            onOpened(order)
-                            onClose()
-                        },
-                    })
+                    create.mutate(
+                        { ...values, parts: (values.parts ?? []).filter((part) => part.description.trim().length > 0) },
+                        {
+                            onSuccess: (order) => {
+                                onOpened(order)
+                                onClose()
+                            },
+                        }
+                    )
                 }
             >
                 <Form.Item
@@ -106,6 +118,7 @@ const OpenOrderModal = ({ open, vehicleId, onClose, onOpened }: Props) => {
                     rules={[{ required: true, message: t('validation.required') }]}
                 >
                     <Select
+                        onChange={onTypeChange}
                         options={SERVICE_TYPES.map((item) => ({ value: item, label: enumLabel('service_type', item) }))}
                     />
                 </Form.Item>
@@ -137,7 +150,16 @@ const OpenOrderModal = ({ open, vehicleId, onClose, onOpened }: Props) => {
                     <InputNumber min={1} step={1000} style={{ width: '100%' }} addonAfter={'km'} />
                 </Form.Item>
                 <Form.Item name={'description'} label={t('fields.description')}>
-                    <Input.TextArea rows={3} />
+                    <Input.TextArea rows={2} />
+                </Form.Item>
+
+                <Divider titlePlacement={'start'}>{t('workshop.parts')}</Divider>
+                <Typography.Paragraph type={'secondary'} style={{ fontSize: 12 }}>
+                    {t('workshop.parts_hint')}
+                </Typography.Paragraph>
+                {/* A controlled field like any other: the template is set on the form, the desk edits it. */}
+                <Form.Item name={'parts'} noStyle>
+                    <PartsEditor currency={settings.data?.currency ?? 'EUR'} />
                 </Form.Item>
             </Form>
         </Modal>

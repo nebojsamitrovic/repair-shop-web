@@ -20,7 +20,7 @@ project started from.
 | Permission-guarded routes, self-filtering sidebar, en / sr switch | done |
 | Error model: branch on `code`, field violations, translations | done |
 | **Dashboard**: what is in the shop, finished and earned this month, orders per month, cars coming up for service, latest orders | done |
-| **Workshop**: the queue (in the shop / mine / all), opening an order, labour priced per hour or flat, parts, status transitions with a reason on cancel | done |
+| **Workshop**: the queue (in the shop / mine / all), opening an order with the parts prefilled from the service template (small: oil and the four filters; major: plus belts and water pump), part — quantity — price rows with + / − and a running total, labour priced per hour or flat, status transitions with a reason on cancel | done |
 | **Files on an order**: photographs of the fault, invoices, PDFs — uploaded straight to storage | done |
 | **Quote** as a PDF, in the customer's language or the one asked for | done |
 | **Vehicles**: list, register, edit, record a reading, the maintenance forecast and the reminders sent, service history | done |

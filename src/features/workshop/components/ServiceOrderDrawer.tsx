@@ -1,10 +1,10 @@
-import { DeleteOutlined, PrinterOutlined } from '@ant-design/icons'
-import { App, Button, Descriptions, Divider, Drawer, Dropdown, Flex, Skeleton, Table, Tag, Typography } from 'antd'
+import { PrinterOutlined } from '@ant-design/icons'
+import { App, Button, Descriptions, Divider, Drawer, Dropdown, Flex, Skeleton, Tag, Typography } from 'antd'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
-import type { AddServiceItemRequest, ServiceItem, ServiceOrderStatus, UpdateServiceOrderRequest } from 'api/types'
+import type { ServiceOrderStatus, ServicePart, ServicePartRequest, UpdateServiceOrderRequest } from 'api/types'
 import { ErrorBlock, ProtectedComponent } from 'components'
 import { LANGUAGES } from 'lang'
 import useEnumLabel from 'lang/useEnumLabel'
@@ -14,8 +14,8 @@ import useServiceOrderQuery from '../hooks/useServiceOrderQuery'
 import useWorkshopMutation from '../hooks/useWorkshopMutation'
 import { workshopApi } from '../utils/api'
 import AttachmentsSection from './AttachmentsSection'
-import ItemForm from './ItemForm'
 import LabourCard from './LabourCard'
+import PartsEditor from './PartsEditor'
 import ReasonModal from './ReasonModal'
 
 interface Props {
@@ -28,6 +28,44 @@ const statusColor: Record<ServiceOrderStatus, string> = {
     IN_PROGRESS: 'gold',
     DONE: 'green',
     CANCELLED: 'default',
+}
+
+const strip = (parts: ServicePart[]): ServicePartRequest[] =>
+    parts.map(({ description, quantity, unitPrice }) => ({ description, quantity, unitPrice }))
+
+interface PartsSectionProps {
+    parts: ServicePart[]
+    currency: string
+    editable: boolean
+    pending: boolean
+    onSave: (parts: ServicePartRequest[]) => void
+}
+
+/** The editor holds a copy; what the backend has is the truth until Save. */
+const PartsSection = ({ parts, currency, editable, pending, onSave }: PartsSectionProps) => {
+    const { t } = useTranslation()
+    const [draft, setDraft] = useState<ServicePartRequest[]>(() => strip(parts))
+    const dirty = JSON.stringify(draft) !== JSON.stringify(strip(parts))
+
+    return (
+        <>
+            <PartsEditor value={draft} onChange={setDraft} currency={currency} disabled={!editable} />
+            {editable ? (
+                <ProtectedComponent permission={'service:update'}>
+                    <Flex justify={'flex-end'} style={{ marginTop: 12 }}>
+                        <Button
+                            type={'primary'}
+                            disabled={!dirty}
+                            loading={pending}
+                            onClick={() => onSave(draft.filter((part) => part.description.trim().length > 0))}
+                        >
+                            {t('workshop.save_parts')}
+                        </Button>
+                    </Flex>
+                </ProtectedComponent>
+            ) : null}
+        </>
+    )
 }
 
 /** One order: the work priced, the parts, the files, the quote — and what it may do next. */
@@ -50,12 +88,6 @@ const ServiceOrderDrawer = ({ orderId, onClose }: Props) => {
     const update = useWorkshopMutation(
         async (body: UpdateServiceOrderRequest) => await workshopApi.update(orderId as string, body),
         'workshop.saved'
-    )
-    const addItem = useWorkshopMutation(
-        async (item: AddServiceItemRequest) => await workshopApi.addItem(orderId as string, item)
-    )
-    const removeItem = useWorkshopMutation(
-        async (itemId: string) => await workshopApi.removeItem(orderId as string, itemId)
     )
 
     /* The PDF opens in a tab; the browser's own viewer prints it. */
@@ -192,100 +224,29 @@ const ServiceOrderDrawer = ({ orderId, onClose }: Props) => {
                     />
 
                     <Divider titlePlacement={'start'} style={{ marginTop: 20 }}>
-                        {t('workshop.items')}
+                        {t('workshop.parts')}
                     </Divider>
-                    <Table<ServiceItem>
-                        rowKey={'id'}
-                        size={'small'}
-                        pagination={false}
-                        dataSource={detail.items}
-                        locale={{ emptyText: t('workshop.no_items') }}
-                        columns={[
-                            {
-                                title: t('fields.type'),
-                                dataIndex: 'kind',
-                                width: 120,
-                                render: (kind: string) => enumLabel('service_item_kind', kind),
-                            },
-                            { title: t('fields.description'), dataIndex: 'description' },
-                            { title: t('fields.quantity'), dataIndex: 'quantity', align: 'right', width: 90 },
-                            {
-                                title: t('fields.unit_price'),
-                                dataIndex: 'unitPrice',
-                                align: 'right',
-                                width: 110,
-                                render: (price: number, item) => formatMoney(price, item.currency),
-                            },
-                            {
-                                title: t('fields.amount'),
-                                dataIndex: 'amount',
-                                align: 'right',
-                                width: 110,
-                                render: (amount: number, item) => (
-                                    <Typography.Text strong>{formatMoney(amount, item.currency)}</Typography.Text>
-                                ),
-                            },
-                            {
-                                key: 'actions',
-                                width: 50,
-                                align: 'right',
-                                render: (_, item) =>
-                                    editable ? (
-                                        <ProtectedComponent permission={'service:update'}>
-                                            <Button
-                                                type={'text'}
-                                                size={'small'}
-                                                danger
-                                                icon={<DeleteOutlined />}
-                                                onClick={() => removeItem.mutate(item.id)}
-                                            />
-                                        </ProtectedComponent>
-                                    ) : null,
-                            },
-                        ]}
-                        summary={() => (
-                            <>
-                                <Table.Summary.Row>
-                                    <Table.Summary.Cell index={0} colSpan={4}>
-                                        <Typography.Text type={'secondary'}>
-                                            {t('workshop.parts_total')}
-                                        </Typography.Text>
-                                    </Table.Summary.Cell>
-                                    <Table.Summary.Cell index={1} align={'right'}>
-                                        {formatMoney(detail.partsTotal, detail.summary.currency)}
-                                    </Table.Summary.Cell>
-                                    <Table.Summary.Cell index={2} />
-                                </Table.Summary.Row>
-                                <Table.Summary.Row>
-                                    <Table.Summary.Cell index={0} colSpan={4}>
-                                        <Typography.Text type={'secondary'}>{t('workshop.labour')}</Typography.Text>
-                                    </Table.Summary.Cell>
-                                    <Table.Summary.Cell index={1} align={'right'}>
-                                        {formatMoney(detail.labour.cost, detail.summary.currency)}
-                                    </Table.Summary.Cell>
-                                    <Table.Summary.Cell index={2} />
-                                </Table.Summary.Row>
-                                <Table.Summary.Row>
-                                    <Table.Summary.Cell index={0} colSpan={4}>
-                                        <Typography.Text strong>{t('fields.total')}</Typography.Text>
-                                    </Table.Summary.Cell>
-                                    <Table.Summary.Cell index={1} align={'right'}>
-                                        <Typography.Text strong>
-                                            {formatMoney(detail.summary.total, detail.summary.currency)}
-                                        </Typography.Text>
-                                    </Table.Summary.Cell>
-                                    <Table.Summary.Cell index={2} />
-                                </Table.Summary.Row>
-                            </>
-                        )}
+                    {/* Keyed by what the backend has, so a save or a refetch starts the editor over from the truth. */}
+                    <PartsSection
+                        key={JSON.stringify(detail.parts)}
+                        parts={detail.parts}
+                        currency={detail.summary.currency}
+                        editable={editable}
+                        pending={update.isPending}
+                        onSave={(parts) => update.mutate({ parts })}
                     />
-                    {editable ? (
-                        <ProtectedComponent permission={'service:update'}>
-                            <div style={{ marginTop: 16 }}>
-                                <ItemForm pending={addItem.isPending} onAdd={(item) => addItem.mutate(item)} />
-                            </div>
-                        </ProtectedComponent>
-                    ) : null}
+
+                    <Flex justify={'flex-end'} gap={24} style={{ marginTop: 16 }}>
+                        <Typography.Text type={'secondary'}>
+                            {t('workshop.labour')}: {formatMoney(detail.labour.cost, detail.summary.currency)}
+                        </Typography.Text>
+                        <Typography.Text type={'secondary'}>
+                            {t('workshop.parts_total')}: {formatMoney(detail.partsTotal, detail.summary.currency)}
+                        </Typography.Text>
+                        <Typography.Text strong>
+                            {t('fields.total')}: {formatMoney(detail.summary.total, detail.summary.currency)}
+                        </Typography.Text>
+                    </Flex>
 
                     <Divider titlePlacement={'start'} style={{ marginTop: 20 }}>
                         {t('attachments.title')}
