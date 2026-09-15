@@ -251,7 +251,8 @@
         "roles": "Roles",
         "invitations": "Invitations",
         "audit_log": "Audit log",
-        "notifications": "Notifications"
+        "notifications": "Notifications",
+        "dashboard": "Dashboard"
     },
     "pages": {
         "login": {
@@ -309,6 +310,9 @@
         "not_found": {
             "title": "Not found",
             "description": "This page does not exist."
+        },
+        "dashboard": {
+            "title": "Dashboard"
         }
     },
     "login": {
@@ -476,5 +480,31 @@
         "reopen": "Reopen",
         "confirm_close": "Close this location? Its orders stay on record.",
         "confirm_reopen": "Reopen this location?"
+    },
+    "dashboard": {
+        "morning": "Good morning",
+        "afternoon": "Good afternoon",
+        "evening": "Good evening",
+        "subtitle": "{{garage}} · {{date}}",
+        "in_the_shop": "In the shop",
+        "in_progress_hint": "{{count}} in progress",
+        "done_this_month": "Finished this month",
+        "finished_orders": "orders closed as done",
+        "revenue_this_month": "Earned this month",
+        "revenue_hint": "labour and parts of finished orders",
+        "due_soon": "Due within 30 days",
+        "due_soon_hint": "cars expected to need a service",
+        "orders_by_month": "Orders per month",
+        "last_six_months": "last six months",
+        "orders_count": "{{count}} orders",
+        "by_type": "By type, last six months",
+        "reminders_this_month": "Reminders this month",
+        "coming_up": "Coming up for service",
+        "nobody_due": "No car is due yet — the forecast starts with the first finished service.",
+        "in_days": "in {{count}} days",
+        "overdue": "{{count}} days overdue",
+        "recent_orders": "Latest orders",
+        "all_orders": "All orders",
+        "nothing_yet": "Nothing yet."
     }
 }

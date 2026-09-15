@@ -8,6 +8,8 @@ export const Routes = {
     Login: { path: '/login', pageTitle: 'pages.login.title', permissions: [] },
     Onboarding: { path: '/onboarding', pageTitle: 'pages.onboarding.title', permissions: [] },
 
+    Dashboard: { path: '/dashboard', pageTitle: 'pages.dashboard.title', permissions: ['dashboard:read'] },
+
     Workshop: { path: '/workshop', pageTitle: 'pages.workshop.title', permissions: ['service:read'] },
 
     Vehicles: { path: '/vehicles', pageTitle: 'pages.vehicles.title', permissions: ['vehicle:read'] },

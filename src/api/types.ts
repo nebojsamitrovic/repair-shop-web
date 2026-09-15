@@ -366,6 +366,39 @@ export interface AddNoteAttachmentRequest {
     sizeBytes: number
 }
 
+/* ---------- dashboard ---------- */
+
+export interface DashboardView {
+    workshop: {
+        openOrders: number
+        inProgress: number
+        doneThisMonth: number
+        revenueThisMonth: number
+        currency: string
+    }
+    customers: {
+        customers: number
+        vehicles: number
+        dueWithin30Days: number
+        remindersThisMonth: number
+    }
+    /** One row per month, oldest first, gaps included, so a chart has no holes. */
+    ordersByMonth: { month: string; count: number; revenue: number }[]
+    ordersByType: Partial<Record<ServiceType, number>>
+    dueSoon: {
+        vehicleId: string
+        registrationPlate: string
+        label: string
+        customerName?: string | null
+        type: ServiceType
+        atMileage: number
+        expectedOn: string
+        /** Negative when overdue. */
+        daysLeft: number
+    }[]
+    recentOrders: ServiceOrderSummary[]
+}
+
 /* ---------- platform ---------- */
 
 export interface NotificationView {

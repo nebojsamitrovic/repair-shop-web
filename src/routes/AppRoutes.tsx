@@ -15,6 +15,7 @@ import { Routes } from './config'
  * Split per screen, so nothing but login, onboarding and the shell is in the bundle somebody
  * downloads to reach the login form.
  */
+const Dashboard = lazy(async () => await import('features/dashboard/pages/Dashboard'))
 const Workshop = lazy(async () => await import('features/workshop/pages/Workshop'))
 const Vehicles = lazy(async () => await import('features/vehicles/pages/Vehicles'))
 const VehicleDetail = lazy(async () => await import('features/vehicles/pages/VehicleDetail'))
@@ -29,6 +30,12 @@ const Roles = lazy(async () => await import('features/roles/pages/Roles'))
 const Users = lazy(async () => await import('features/settings/pages/Users'))
 const Invitations = lazy(async () => await import('features/settings/pages/Invitations'))
 const AuditLog = lazy(async () => await import('features/settings/pages/AuditLog'))
+
+/** Where a signed-in person lands: the dashboard if they may see it, otherwise the workshop. */
+const Home = () => {
+    const { can } = useSession()
+    return <Navigate to={can('dashboard:read') ? Routes.Dashboard.path : Routes.Workshop.path} replace />
+}
 
 const AppRoutes = () => {
     const { t } = useTranslation()
@@ -72,6 +79,10 @@ const AppRoutes = () => {
         <RouterRoutes>
             {/* Inside the shell, so a chunk loading shows in the content area rather than blanking the page. */}
             <Route element={<Layout />}>
+                <Route element={<ProtectedRoute permissions={Routes.Dashboard.permissions} />}>
+                    <Route path={Routes.Dashboard.path} element={<Dashboard />} />
+                </Route>
+
                 <Route element={<ProtectedRoute permissions={Routes.Workshop.permissions} />}>
                     <Route path={Routes.Workshop.path} element={<Workshop />} />
                 </Route>
@@ -115,7 +126,10 @@ const AppRoutes = () => {
 
                 <Route path={Routes.Forbidden.path} element={<ErrorPage status={'403'} />} />
                 <Route path={Routes.NotFound.path} element={<ErrorPage status={'404'} />} />
-                <Route path={'/'} element={<Navigate to={Routes.Workshop.path} replace />} />
+                {/* Straight from the login form or onboarding: home, not a 404 for a path that no longer applies. */}
+                <Route path={'/'} element={<Home />} />
+                <Route path={Routes.Login.path} element={<Home />} />
+                <Route path={Routes.Onboarding.path} element={<Home />} />
                 <Route path={'*'} element={<Navigate to={Routes.NotFound.path} replace />} />
             </Route>
         </RouterRoutes>

@@ -3,7 +3,7 @@ import { Routes, type RouteDefinition } from 'routes/config'
 export interface NavigationItem {
     key: string
     labelKey: string
-    icon: 'tool' | 'car' | 'team' | 'book' | 'shop' | 'setting' | 'user' | 'mail' | 'history' | 'key'
+    icon: 'dashboard' | 'tool' | 'car' | 'team' | 'book' | 'shop' | 'setting' | 'user' | 'mail' | 'history' | 'key'
     route: RouteDefinition
 }
 
@@ -19,6 +19,7 @@ export const navigation: NavigationGroup[] = [
         key: 'main',
         labelKey: null,
         items: [
+            { key: 'dashboard', labelKey: 'nav.dashboard', icon: 'dashboard', route: Routes.Dashboard },
             { key: 'workshop', labelKey: 'nav.workshop', icon: 'tool', route: Routes.Workshop },
             { key: 'vehicles', labelKey: 'nav.vehicles', icon: 'car', route: Routes.Vehicles },
             { key: 'customers', labelKey: 'nav.customers', icon: 'team', route: Routes.Customers },

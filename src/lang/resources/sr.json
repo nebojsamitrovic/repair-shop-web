@@ -98,7 +98,7 @@
         "notes": "Napomene",
         "created_at": "Kreiran",
         "scheduled_at": "Termin",
-        "customer": "Kupac",
+        "customer": "Klijent",
         "valid_until": "Važi do",
         "sold_at": "Prodato",
         "sale_price": "Prodajna cena",
@@ -182,7 +182,7 @@
         "ANNUAL_MILEAGE_REQUIRED": "Za servis je potrebna godišnja kilometraža — na njoj se gradi podsetnik.",
         "MILEAGE_REQUIRED": "Servis mora da zabeleži kilometražu na kojoj je urađen.",
         "NOT_A_MECHANIC": "Posao može da se dodeli samo kolegi sa rolom MECHANIC.",
-        "CUSTOMER_HAS_VEHICLES": "Prvo uklonite ili prebacite vozila ovog kupca.",
+        "CUSTOMER_HAS_VEHICLES": "Prvo uklonite ili prebacite vozila ovog klijenta.",
         "LAST_LOCATION": "Servis mora da ima bar jedan otvoren objekat.",
         "BIG_SERVICE_TOO_SOON": "Veliki servis ne može da bude češći od malog.",
         "SERVICE_ORDER_CLOSED": "Ovaj nalog je zatvoren i više se ne menja.",
@@ -245,7 +245,7 @@
     "nav": {
         "workshop": "Radionica",
         "vehicles": "Vozila",
-        "customers": "Kupci",
+        "customers": "Klijenti",
         "notes": "Beležnica",
         "settings": "Podešavanja",
         "garage": "Servis",
@@ -254,7 +254,8 @@
         "roles": "Role",
         "invitations": "Pozivnice",
         "audit_log": "Istorija izmena",
-        "notifications": "Obaveštenja"
+        "notifications": "Obaveštenja",
+        "dashboard": "Pregled"
     },
     "pages": {
         "login": {
@@ -276,10 +277,10 @@
             "title": "Novo vozilo"
         },
         "customers": {
-            "title": "Kupci"
+            "title": "Klijenti"
         },
         "customer": {
-            "title": "Kupac"
+            "title": "Klijent"
         },
         "notes": {
             "title": "Beležnica"
@@ -312,6 +313,9 @@
         "not_found": {
             "title": "Nije pronađeno",
             "description": "Ova strana ne postoji."
+        },
+        "dashboard": {
+            "title": "Pregled"
         }
     },
     "login": {
@@ -319,18 +323,18 @@
         "submit": "Prijavi se",
         "failed": "Pogrešna adresa ili lozinka.",
         "lead": "Nalog vašeg servisa.",
-        "headline": "Vozila, radovi i kupci koji se vraćaju.",
-        "subheadline": "Istorija servisa svakog vozila, svaki posao naplaćen kako vi radite, i podsetnik kupcu pre nego što stigne sledeći servis.",
+        "headline": "Vozila, radovi i klijenti koji se vraćaju.",
+        "subheadline": "Istorija servisa svakog vozila, svaki posao naplaćen kako vi radite, i podsetnik klijentu pre nego što stigne sledeći servis.",
         "invite_only": "Nalozi se otvaraju pozivnicom — zatražite je od vlasnika servisa.",
-        "footnote": "RepairShop OS — radionica, kupci i podsetnici, za auto-servise.",
+        "footnote": "RepairShop OS — radionica, klijenti i podsetnici, za auto-servise.",
         "highlights": {
             "workshop": {
                 "title": "Radionica, naplaćena kako vi radite",
                 "body": "Mali i veliki servisi i popravke, rad po satu ili fiksno, delovi, slike i računi na svakom nalogu, i predračun za štampu."
             },
             "reminders": {
-                "title": "Kupci koji se vraćaju",
-                "body": "Iz kilometraže i godišnje pređenog puta vozilo samo kaže kada mu stiže sledeći servis — a kupac to sazna na vreme."
+                "title": "Klijenti koji se vraćaju",
+                "body": "Iz kilometraže i godišnje pređenog puta vozilo samo kaže kada mu stiže sledeći servis — a klijent to sazna na vreme."
             },
             "notebook": {
                 "title": "Beležnica mehaničara",
@@ -339,18 +343,18 @@
         }
     },
     "customers": {
-        "subtitle": "{{count}} kupaca",
-        "add": "Novi kupac",
-        "edit": "Izmeni kupca",
+        "subtitle": "{{count}} klijenata",
+        "add": "Novi klijent",
+        "edit": "Izmeni klijenta",
         "search_placeholder": "Ime, firma, email ili telefon",
-        "saved": "Kupac sačuvan.",
-        "deleted": "Kupac obrisan.",
-        "confirm_delete": "Obrisati ovog kupca?",
+        "saved": "Klijent sačuvan.",
+        "deleted": "Klijent obrisan.",
+        "confirm_delete": "Obrisati ovog klijenta?",
         "details": "Podaci",
         "vehicles": "Njegova vozila",
         "no_vehicles": "Još nema registrovanih vozila.",
         "company_hint": "Za službeno vozilo: firma se piše na predračunu, a osoba, ako je uneta, u zagradi.",
-        "email_hint": "Ovde stižu podsetnici za servis. Bez adrese kupcu se ne piše.",
+        "email_hint": "Ovde stižu podsetnici za servis. Bez adrese klijentu se ne piše.",
         "locale_hint": "Jezik na kom se pišu podsetnici i predračun.",
         "locale_default": "Jezik servisa"
     },
@@ -374,7 +378,7 @@
             "title": "Održavanje",
             "no_history": "Još nema zabeleženog servisa. Prognoza kreće od prvog završenog servisa.",
             "next": "Sledeće: {{type}} na {{km}} km",
-            "expected": "Očekuje se oko {{date}}. Kupcu stiže mejl dve nedelje ranije.",
+            "expected": "Očekuje se oko {{date}}. Klijentu stiže mejl dve nedelje ranije.",
             "no_date": "Nema datuma bez godišnje kilometraže i očitavanja.",
             "intervals": "Intervali (mali / veliki)",
             "last_small": "Poslednji mali servis",
@@ -447,7 +451,7 @@
         "limits": "Slike, PDF, tekst i office dokumenti, do 20 MB po fajlu"
     },
     "garage": {
-        "subtitle": "Šta važi za ceo servis: intervali servisa, cena rada, jezik na kom se piše kupcima.",
+        "subtitle": "Šta važi za ceo servis: intervali servisa, cena rada, jezik na kom se piše klijentima.",
         "saved": "Podešavanja sačuvana.",
         "intervals": {
             "title": "Intervali servisa",
@@ -463,7 +467,7 @@
         },
         "contact": {
             "title": "Jezik i kontakt",
-            "hint": "Novi kupci dobijaju ovaj jezik dok ne kažu drugačije. Telefon i email se štampaju u svakom podsetniku.",
+            "hint": "Novi klijenti dobijaju ovaj jezik dok ne kažu drugačije. Telefon i email se štampaju u svakom podsetniku.",
             "default_language": "Podrazumevani jezik"
         }
     },
@@ -479,5 +483,31 @@
         "reopen": "Ponovo otvori",
         "confirm_close": "Zatvoriti ovaj objekat? Nalozi ostaju zabeleženi.",
         "confirm_reopen": "Ponovo otvoriti ovaj objekat?"
+    },
+    "dashboard": {
+        "morning": "Dobro jutro",
+        "afternoon": "Dobar dan",
+        "evening": "Dobro veče",
+        "subtitle": "{{garage}} · {{date}}",
+        "in_the_shop": "U radionici",
+        "in_progress_hint": "{{count}} u radu",
+        "done_this_month": "Završeno ovog meseca",
+        "finished_orders": "naloga zatvoreno kao završeno",
+        "revenue_this_month": "Zarađeno ovog meseca",
+        "revenue_hint": "rad i delovi završenih naloga",
+        "due_soon": "Dospeva u 30 dana",
+        "due_soon_hint": "vozila kojima se očekuje servis",
+        "orders_by_month": "Nalozi po mesecima",
+        "last_six_months": "poslednjih šest meseci",
+        "orders_count": "{{count}} naloga",
+        "by_type": "Po tipu, poslednjih šest meseci",
+        "reminders_this_month": "Podsetnici ovog meseca",
+        "coming_up": "Stižu na servis",
+        "nobody_due": "Nijedno vozilo još ne dospeva — prognoza kreće od prvog završenog servisa.",
+        "in_days": "za {{count}} dana",
+        "overdue": "kasni {{count}} dana",
+        "recent_orders": "Poslednji nalozi",
+        "all_orders": "Svi nalozi",
+        "nothing_yet": "Još ništa."
     }
 }

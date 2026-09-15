@@ -19,6 +19,7 @@ project started from.
 | `GET /auth/me`, onboarding through `POST /auth/bootstrap` | done |
 | Permission-guarded routes, self-filtering sidebar, en / sr switch | done |
 | Error model: branch on `code`, field violations, translations | done |
+| **Dashboard**: what is in the shop, finished and earned this month, orders per month, cars coming up for service, latest orders | done |
 | **Workshop**: the queue (in the shop / mine / all), opening an order, labour priced per hour or flat, parts, status transitions with a reason on cancel | done |
 | **Files on an order**: photographs of the fault, invoices, PDFs — uploaded straight to storage | done |
 | **Quote** as a PDF, in the customer's language or the one asked for | done |
@@ -104,7 +105,7 @@ src/
   lang/         i18next, en.json / sr.json, useEnumLabel, the language switch
   layout/       the shell: sidebar (filters itself by permission), header (bell, language, sign-out)
   routes/       the route registry — path, title, permissions — and AppRoutes
-  features/     one folder per screen family: workshop, vehicles, customers, notes, garage,
+  features/     one folder per screen family: dashboard, workshop, vehicles, customers, notes, garage,
                 roles, settings, notifications, auth, onboarding, errors
 ```
 

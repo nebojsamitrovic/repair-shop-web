@@ -1,6 +1,7 @@
 import {
     BookOutlined,
     CarOutlined,
+    DashboardOutlined,
     HistoryOutlined,
     KeyOutlined,
     MailOutlined,
@@ -21,6 +22,7 @@ import { palette } from 'theme'
 import { navigation, type NavigationItem } from '../navigation'
 
 const icons: Record<NavigationItem['icon'], ReactNode> = {
+    dashboard: <DashboardOutlined />,
     tool: <ToolOutlined />,
     car: <CarOutlined />,
     team: <TeamOutlined />,

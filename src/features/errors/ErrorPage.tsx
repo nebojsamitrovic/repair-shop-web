@@ -14,7 +14,7 @@ const ErrorPage = ({ status }: { status: '403' | '404' }) => {
             title={status}
             subTitle={t(status === '403' ? 'pages.forbidden.description' : 'pages.not_found.description')}
             extra={
-                <Button type={'primary'} onClick={() => navigate(Routes.Workshop.path)}>
+                <Button type={'primary'} onClick={() => navigate(Routes.Dashboard.path)}>
                     {t('actions.back_home')}
                 </Button>
             }
