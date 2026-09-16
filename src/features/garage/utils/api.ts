@@ -1,10 +1,23 @@
 import { api } from 'api/client'
-import type { GarageSettings, LocationRequest, LocationView, UpdateGarageSettingsRequest } from 'api/types'
+import type {
+    GarageLogo,
+    GarageSettings,
+    LocationRequest,
+    LocationView,
+    LogoUpload,
+    UpdateGarageSettingsRequest,
+} from 'api/types'
 
 export const garageApi = {
     settings: async () => (await api.get<GarageSettings>('/settings')).data,
     updateSettings: async (body: UpdateGarageSettingsRequest) =>
         (await api.patch<GarageSettings>('/settings', body)).data,
+
+    /** Three steps, like every other upload: ask, PUT the bytes, then say which key to use. */
+    presignLogo: async (body: { fileName: string; contentType: string; sizeBytes: number }) =>
+        (await api.post<LogoUpload>('/settings/logo/upload-url', body)).data,
+    changeLogo: async (storageKey: string) => (await api.put<GarageLogo>('/settings/logo', { storageKey })).data,
+    removeLogo: async () => (await api.delete<GarageLogo>('/settings/logo')).data,
 
     locations: async () => (await api.get<LocationView[]>('/locations')).data,
     createLocation: async (body: LocationRequest) => (await api.post<LocationView>('/locations', body)).data,

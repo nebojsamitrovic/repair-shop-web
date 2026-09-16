@@ -20,17 +20,21 @@ const VehicleForm = ({ form, editing = false, onFinish }: Props) => {
 
     return (
         <Form<CreateVehicleRequest> form={form} layout={'vertical'} requiredMark={false} onFinish={onFinish}>
-            <Form.Item
-                name={'customerId'}
-                label={t('fields.customer')}
-                rules={[{ required: true, message: t('validation.required') }]}
-            >
-                <Select
-                    showSearch
-                    optionFilterProp={'label'}
-                    options={customers.map((customer) => ({ value: customer.id, label: customer.displayName }))}
-                />
-            </Form.Item>
+            {/* The owner is only chosen once, here. Afterwards the car changes hands, which is an
+                event with a day and a reason — "Change owner" on the car's page, not a field. */}
+            {editing ? null : (
+                <Form.Item
+                    name={'customerId'}
+                    label={t('fields.customer')}
+                    rules={[{ required: true, message: t('validation.required') }]}
+                >
+                    <Select
+                        showSearch
+                        optionFilterProp={'label'}
+                        options={customers.map((customer) => ({ value: customer.id, label: customer.displayName }))}
+                    />
+                </Form.Item>
+            )}
             <Row gutter={12}>
                 <Col xs={24} md={8}>
                     <Form.Item
@@ -43,7 +47,12 @@ const VehicleForm = ({ form, editing = false, onFinish }: Props) => {
                     </Form.Item>
                 </Col>
                 <Col xs={24} md={16}>
-                    <Form.Item name={'vin'} label={t('fields.vin')} rules={[{ max: 32 }]}>
+                    <Form.Item
+                        name={'vin'}
+                        label={t('fields.vin')}
+                        extra={t('vehicles.vin_hint')}
+                        rules={[{ max: 32 }]}
+                    >
                         <Input style={{ textTransform: 'uppercase' }} />
                     </Form.Item>
                 </Col>

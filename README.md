@@ -20,13 +20,16 @@ project started from.
 | Permission-guarded routes, self-filtering sidebar, en / sr switch | done |
 | Error model: branch on `code`, field violations, translations | done |
 | **Dashboard**: what is in the shop, finished and earned this month, orders per month, cars coming up for service, latest orders | done |
-| **Workshop**: the queue (in the shop / mine / all), opening an order with the parts prefilled from the service template (small: oil and the four filters; major: plus belts and water pump), part — quantity — price rows with + / − and a running total, labour priced per hour or flat, status transitions with a reason on cancel | done |
+| **Workshop**: the queue (in the shop / mine / all), opening an order with the parts prefilled from the service template (small: oil and the four filters; major: plus belts and water pump), part — quantity — price rows with + / − and a running total, status transitions with a reason on cancel | done |
+| **Labour**: hours × rate with the cost following as you type, or "fixed price for the whole job" — which swaps the hours field for a required price | done |
 | **Files on an order**: photographs of the fault, invoices, PDFs — uploaded straight to storage | done |
-| **Quote** as a PDF, in the customer's language or the one asked for | done |
+| **Quote and invoice** as a PDF, in the customer's language or the one asked for — an open order quotes, a finished one invoices — printed or emailed to the customer | done |
 | **Vehicles**: list, register, edit, record a reading, the maintenance forecast and the reminders sent, service history | done |
+| **Service book** on the car's page: every finished job with what it came to, printable and emailable to the customer | done |
+| **Owners**: who has the car now and everybody before them, and handing it over with a date and a reason | done |
 | **Customers**: list, detail with their cars, language per customer | done |
 | **Notebook**: the mechanics' notes with files, searchable by make, model and text; editable by the author or an admin | done |
-| **Garage settings**: service intervals (10 000 / 60 000 km by default), labour pricing, default language, contact | done |
+| **Garage settings**: service intervals (10 000 / 60 000 km by default), labour pricing, default language, contact, and the garage's logo — shown in the menu in place of its name | done |
 | **Locations**: several per garage, opened and closed rather than deleted | done |
 | Settings: users, invitations, roles, audit log; notification bell (polled) | done |
 | Generated OpenAPI types | wired up, not yet generated — see _Types_ |

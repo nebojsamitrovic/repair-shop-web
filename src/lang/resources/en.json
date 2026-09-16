@@ -14,7 +14,10 @@
         "save": "Save",
         "cancel": "Cancel",
         "edit": "Edit",
-        "remove": "Remove"
+        "remove": "Remove",
+        "send": "Send",
+        "send_email": "Email",
+        "print": "Print"
     },
     "validation": {
         "required": "This field is required.",
@@ -169,7 +172,10 @@
         "title": "Title",
         "body": "Text",
         "tags": "Tags",
-        "part": "Part"
+        "part": "Part",
+        "labour_price": "Labour price",
+        "date": "Date",
+        "note": "Note"
     },
     "errors": {
         "AUTH_NOT_CONFIGURED": "The backend has no Firebase credentials configured, so nobody can sign in.",
@@ -208,7 +214,8 @@
         "service_type": {
             "SMALL_SERVICE": "Small service",
             "BIG_SERVICE": "Major service",
-            "REPAIR": "Repair"
+            "REPAIR": "Repair",
+            "DIAGNOSTICS": "Diagnostics"
         },
         "service_order_status": {
             "OPEN": "Open",
@@ -380,7 +387,24 @@
             "reminders": "Reminders sent",
             "no_reminders": "Nothing sent yet.",
             "sent_at": "sent {{date}}"
-        }
+        },
+        "service_book": "Service book",
+        "book_empty": "Nothing has been finished on this car here yet.",
+        "jobs_done": "Jobs done",
+        "total_spent": "Spent here",
+        "last_service": "Last visit",
+        "vin_hint": "Optional. One car per VIN within the garage.",
+        "owners": "Owners",
+        "no_owners": "No owner has been recorded yet.",
+        "current_owner": "Current",
+        "until_today": "today",
+        "change_owner": "Change owner",
+        "change_owner_hint": "The previous owner keeps the orders written while they had the car.",
+        "new_owner": "New owner",
+        "changed_hands_on": "Changed hands on",
+        "today_when_empty": "Today when left empty.",
+        "owner_note_placeholder": "Sold, inherited, company car handed over",
+        "owner_changed": "The car has a new owner."
     },
     "workshop": {
         "subtitle": "{{count}} orders",
@@ -399,10 +423,9 @@
         "annual_required": "A service needs the yearly distance.",
         "labour": "Labour",
         "labour_cost": "Labour cost",
-        "labour_hint": "Hours times the rate, or the fixed amount once any hours are recorded. Copied from the garage settings when the order was opened; change it here for this order only.",
+        "labour_hint": "The hours times the rate. Leave the hours empty until somebody has worked on the car.",
         "no_orders": "This car has not been in yet.",
         "parts_total": "Parts",
-        "print_quote": "Quote",
         "confirm_cancel": "Why is this order being cancelled?",
         "reason_placeholder": "A sentence is enough — it stays on the record.",
         "transition": {
@@ -424,7 +447,13 @@
             "timing_belt_kit": "Timing belt kit",
             "v_belt_kit": "V-ribbed belt kit",
             "water_pump": "Water pump"
-        }
+        },
+        "quote": "quote",
+        "invoice": "invoice",
+        "print_document": "Print {{document}}",
+        "fixed_price": "Fixed price for the whole job",
+        "labour_hint_fixed": "The price agreed for the job, whatever the hours turn out to be.",
+        "labour_unsaved": "Not saved yet — the order still carries {{saved}}."
     },
     "attachments": {
         "title": "Files",
@@ -473,6 +502,16 @@
             "title": "Language and contact",
             "hint": "New customers get this language unless they say otherwise. The phone and email are printed in every reminder.",
             "default_language": "Default language"
+        },
+        "logo_saved": "The logo was saved.",
+        "logo_removed": "The logo was removed.",
+        "logo": {
+            "title": "Logo",
+            "hint": "Shown in the menu instead of the garage's name. PNG, JPEG, WebP or SVG, up to 2 MB.",
+            "upload": "Upload a logo",
+            "replace": "Replace",
+            "too_large": "A logo has to be under 2 MB.",
+            "confirm_remove": "Remove the logo and go back to the name?"
         }
     },
     "locations": {
@@ -513,5 +552,12 @@
         "recent_orders": "Latest orders",
         "all_orders": "All orders",
         "nothing_yet": "Nothing yet."
+    },
+    "documents": {
+        "send_title": "Send the {{document}}",
+        "send_hint": "Left empty, it goes to the address the customer is on file with, in their own language.",
+        "customer_address": "The customer's address",
+        "customer_language": "The customer's language",
+        "sent": "Sent to {{recipient}}."
     }
 }

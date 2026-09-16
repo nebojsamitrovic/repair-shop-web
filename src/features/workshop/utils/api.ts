@@ -1,10 +1,12 @@
 import { api } from 'api/client'
 import type {
     AddAttachmentRequest,
+    DocumentSent,
     AttachmentUpload,
     OpenServiceOrderRequest,
     PageResponse,
     PresignAttachmentRequest,
+    SendDocumentRequest,
     ServiceAttachment,
     ServiceOrderDetail,
     ServiceOrderStatus,
@@ -27,9 +29,11 @@ export const workshopApi = {
         (await api.post<ServiceAttachment>(`/service-orders/${orderId}/attachments`, body)).data,
     removeAttachment: async (orderId: string, attachmentId: string) =>
         await api.delete(`/service-orders/${orderId}/attachments/${attachmentId}`),
-    /** The PDF, as bytes; the caller opens it in a tab. */
+    /** The PDF, as bytes; the caller opens it in a tab. A finished order prints an invoice. */
     quote: async (orderId: string, lang?: string) =>
         (await api.get<Blob>(`/service-orders/${orderId}/quote`, { params: { lang }, responseType: 'blob' })).data,
+    emailQuote: async (orderId: string, body: SendDocumentRequest) =>
+        (await api.post<DocumentSent>(`/service-orders/${orderId}/quote/email`, body)).data,
     remove: async (orderId: string) => await api.delete(`/service-orders/${orderId}`),
 }
 

@@ -14,6 +14,7 @@ import { ErrorBlock, PageHeader } from 'components'
 import { useMutation, useQuery } from 'hooks'
 import useEnumLabel from 'lang/useEnumLabel'
 import { formatMoney } from 'utils/format'
+import LogoCard from '../components/LogoCard'
 import { garageApi, garageKeys } from '../utils/api'
 
 /**
@@ -59,6 +60,10 @@ const GarageSettings = () => {
                     <ErrorBlock error={save.error} />
                 </div>
             ) : null}
+
+            <div style={{ marginBottom: 16 }}>
+                <LogoCard editable={editable} />
+            </div>
 
             <Form<UpdateGarageSettingsRequest>
                 form={form}

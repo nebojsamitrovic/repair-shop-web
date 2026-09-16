@@ -1,4 +1,4 @@
-import { Divider, Form, Input, InputNumber, Modal, Select, Typography } from 'antd'
+import { Checkbox, Col, Divider, Form, Input, InputNumber, Modal, Row, Select, Typography } from 'antd'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -11,6 +11,11 @@ import useWorkshopMutation from '../hooks/useWorkshopMutation'
 import { workshopApi } from '../utils/api'
 import { partsTemplate } from '../utils/templates'
 import PartsEditor from './PartsEditor'
+
+/** The request, plus the way the desk is asked the flat-price question. */
+interface OpenOrderForm extends OpenServiceOrderRequest {
+    labourFixed?: boolean
+}
 
 interface Props {
     open: boolean
@@ -27,10 +32,11 @@ interface Props {
 const OpenOrderModal = ({ open, vehicleId, onClose, onOpened }: Props) => {
     const { t } = useTranslation()
     const enumLabel = useEnumLabel()
-    const [form] = Form.useForm<OpenServiceOrderRequest>()
+    const [form] = Form.useForm<OpenOrderForm>()
     const { vehicles, locations, mechanics } = useDirectory()
     const type = Form.useWatch('type', form) as ServiceType | undefined
     const chosenVehicleId = Form.useWatch('vehicleId', form) as string | undefined
+    const labourFixed = Form.useWatch('labourFixed', form) ?? false
     const settings = useQuery({ queryKey: garageKeys.settings, queryFn: garageApi.settings, staleTime: 5 * 60_000 })
 
     const create = useWorkshopMutation(
@@ -46,8 +52,10 @@ const OpenOrderModal = ({ open, vehicleId, onClose, onOpened }: Props) => {
             type: 'SMALL_SERVICE',
             locationId: locations.length === 1 ? locations[0].id : undefined,
             parts: partsTemplate('SMALL_SERVICE', t),
+            labourFixed: settings.data?.labourPricingMode === 'FIXED',
+            labourRate: settings.data?.activeRate,
         })
-    }, [open, vehicleId, form, locations, t])
+    }, [open, vehicleId, form, locations, settings.data, t])
 
     /* The list follows the type: a service starts with what a service usually needs, a repair with nothing. */
     const onTypeChange = (next: ServiceType) => form.setFieldValue('parts', partsTemplate(next, t))
@@ -81,13 +89,18 @@ const OpenOrderModal = ({ open, vehicleId, onClose, onOpened }: Props) => {
 
             <Typography.Paragraph type={'secondary'}>{t('workshop.open_hint')}</Typography.Paragraph>
 
-            <Form<OpenServiceOrderRequest>
+            <Form<OpenOrderForm>
                 form={form}
                 layout={'vertical'}
                 requiredMark={false}
-                onFinish={(values) =>
+                onFinish={({ labourFixed: agreedFlat, ...values }) =>
                     create.mutate(
-                        { ...values, parts: (values.parts ?? []).filter((part) => part.description.trim().length > 0) },
+                        {
+                            ...values,
+                            labourPricingMode: agreedFlat ? 'FIXED' : 'HOURLY',
+                            labourHours: agreedFlat ? undefined : values.labourHours,
+                            parts: (values.parts ?? []).filter((part) => part.description.trim().length > 0),
+                        },
                         {
                             onSuccess: (order) => {
                                 onOpened(order)
@@ -145,13 +158,60 @@ const OpenOrderModal = ({ open, vehicleId, onClose, onOpened }: Props) => {
                     name={'annualMileage'}
                     label={t('fields.annual_mileage')}
                     extra={t('vehicles.annual_hint')}
-                    rules={[{ required: type !== 'REPAIR', message: t('workshop.annual_required') }]}
+                    rules={[
+                        {
+                            /* Only the two services move the maintenance clock, so only they ask. */
+                            required: type === 'SMALL_SERVICE' || type === 'BIG_SERVICE',
+                            message: t('workshop.annual_required'),
+                        },
+                    ]}
                 >
                     <InputNumber min={1} step={1000} style={{ width: '100%' }} addonAfter={'km'} />
                 </Form.Item>
                 <Form.Item name={'description'} label={t('fields.description')}>
                     <Input.TextArea rows={2} />
                 </Form.Item>
+
+                <Divider titlePlacement={'start'}>{t('workshop.labour')}</Divider>
+                <Form.Item name={'labourFixed'} valuePropName={'checked'} style={{ marginBottom: 12 }}>
+                    <Checkbox
+                        onChange={(event) =>
+                            /* A price per hour is not a price for the job; take the garage's own. */
+                            form.setFieldValue(
+                                'labourRate',
+                                event.target.checked ? settings.data?.fixedRate : settings.data?.hourlyRate
+                            )
+                        }
+                    >
+                        {t('workshop.fixed_price')}
+                    </Checkbox>
+                </Form.Item>
+                <Row gutter={12}>
+                    {labourFixed ? (
+                        <Col xs={24} md={10}>
+                            <Form.Item
+                                name={'labourRate'}
+                                label={t('fields.labour_price')}
+                                rules={[{ required: true, message: t('validation.required') }]}
+                            >
+                                <InputNumber min={0} style={{ width: '100%' }} />
+                            </Form.Item>
+                        </Col>
+                    ) : (
+                        <>
+                            <Col xs={12} md={7}>
+                                <Form.Item name={'labourHours'} label={t('fields.hours')}>
+                                    <InputNumber min={0} step={0.25} style={{ width: '100%' }} />
+                                </Form.Item>
+                            </Col>
+                            <Col xs={12} md={7}>
+                                <Form.Item name={'labourRate'} label={t('fields.hourly_rate')}>
+                                    <InputNumber min={0} style={{ width: '100%' }} />
+                                </Form.Item>
+                            </Col>
+                        </>
+                    )}
+                </Row>
 
                 <Divider titlePlacement={'start'}>{t('workshop.parts')}</Divider>
                 <Typography.Paragraph type={'secondary'} style={{ fontSize: 12 }}>

@@ -1,11 +1,18 @@
-import { PrinterOutlined } from '@ant-design/icons'
+import { MailOutlined, PrinterOutlined } from '@ant-design/icons'
 import { App, Button, Descriptions, Divider, Drawer, Dropdown, Flex, Skeleton, Tag, Typography } from 'antd'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
-import type { ServiceOrderStatus, ServicePart, ServicePartRequest, UpdateServiceOrderRequest } from 'api/types'
+import type {
+    SendDocumentRequest,
+    ServiceOrderStatus,
+    ServicePart,
+    ServicePartRequest,
+    UpdateServiceOrderRequest,
+} from 'api/types'
 import { ErrorBlock, ProtectedComponent } from 'components'
+import { useMutation } from 'hooks'
 import { LANGUAGES } from 'lang'
 import useEnumLabel from 'lang/useEnumLabel'
 import { pathTo, Routes } from 'routes/config'
@@ -17,6 +24,7 @@ import AttachmentsSection from './AttachmentsSection'
 import LabourCard from './LabourCard'
 import PartsEditor from './PartsEditor'
 import ReasonModal from './ReasonModal'
+import SendDocumentModal from './SendDocumentModal'
 
 interface Props {
     orderId?: string
@@ -75,6 +83,7 @@ const ServiceOrderDrawer = ({ orderId, onClose }: Props) => {
     const { message } = App.useApp()
     const [asking, setAsking] = useState<{ title: string; confirm: (reason: string) => void }>()
     const [printing, setPrinting] = useState(false)
+    const [sending, setSending] = useState(false)
 
     const order = useServiceOrderQuery(orderId)
     const detail = order.data
@@ -90,8 +99,21 @@ const ServiceOrderDrawer = ({ orderId, onClose }: Props) => {
         'workshop.saved'
     )
 
+    /* Finished work is invoiced, not quoted: the customer is paying it, not weighing it up. */
+    const finished = detail?.summary.status === 'DONE'
+    const documentName = t(finished ? 'workshop.invoice' : 'workshop.quote')
+
+    const sendDocument = useMutation({
+        mutationFn: async (body: SendDocumentRequest) => await workshopApi.emailQuote(orderId as string, body),
+        onSuccess: (sent) => {
+            message.success(t('documents.sent', { recipient: sent.recipient }))
+            setSending(false)
+        },
+        onError: (error) => message.error(error.message),
+    })
+
     /* The PDF opens in a tab; the browser's own viewer prints it. */
-    const printQuote = async (lang?: string) => {
+    const printDocument = async (lang?: string) => {
         setPrinting(true)
         try {
             const blob = await workshopApi.quote(orderId as string, lang)
@@ -128,14 +150,17 @@ const ServiceOrderDrawer = ({ orderId, onClose }: Props) => {
                                 items: LANGUAGES.map((language) => ({
                                     key: language,
                                     label: t(`language.${language}`),
-                                    onClick: () => void printQuote(language),
+                                    onClick: () => void printDocument(language),
                                 })),
                             }}
                         >
-                            <Button icon={<PrinterOutlined />} loading={printing} onClick={() => void printQuote()}>
-                                {t('workshop.print_quote')}
+                            <Button icon={<PrinterOutlined />} loading={printing} onClick={() => void printDocument()}>
+                                {t('workshop.print_document', { document: documentName })}
                             </Button>
                         </Dropdown>
+                        <Button icon={<MailOutlined />} onClick={() => setSending(true)}>
+                            {t('actions.send_email')}
+                        </Button>
                         {detail.allowedTransitions.map((target) => (
                             <ProtectedComponent
                                 key={target}
@@ -258,6 +283,14 @@ const ServiceOrderDrawer = ({ orderId, onClose }: Props) => {
                     />
                 </>
             )}
+
+            <SendDocumentModal
+                open={sending}
+                title={t('documents.send_title', { document: documentName })}
+                pending={sendDocument.isPending}
+                onCancel={() => setSending(false)}
+                onSend={(body) => sendDocument.mutate(body)}
+            />
 
             {asking ? (
                 <ReasonModal

@@ -14,7 +14,10 @@
         "save": "Sačuvaj",
         "cancel": "Odustani",
         "edit": "Izmeni",
-        "remove": "Ukloni"
+        "remove": "Ukloni",
+        "send": "Pošalji",
+        "send_email": "Pošalji na mejl",
+        "print": "Štampaj"
     },
     "validation": {
         "required": "Obavezno polje.",
@@ -169,7 +172,10 @@
         "title": "Naslov",
         "body": "Tekst",
         "tags": "Oznake",
-        "part": "Deo"
+        "part": "Deo",
+        "labour_price": "Cena rada",
+        "date": "Datum",
+        "note": "Napomena"
     },
     "errors": {
         "AUTH_NOT_CONFIGURED": "Backend nema podešene Firebase kredencijale, pa niko ne može da se prijavi.",
@@ -208,7 +214,8 @@
         "service_type": {
             "SMALL_SERVICE": "Mali servis",
             "BIG_SERVICE": "Veliki servis",
-            "REPAIR": "Popravka"
+            "REPAIR": "Popravka",
+            "DIAGNOSTICS": "Dijagnostika"
         },
         "service_order_status": {
             "OPEN": "Otvoren",
@@ -383,7 +390,24 @@
             "reminders": "Poslati podsetnici",
             "no_reminders": "Još ništa nije poslato.",
             "sent_at": "poslato {{date}}"
-        }
+        },
+        "service_book": "Servisna knjižica",
+        "book_empty": "Na ovom vozilu kod nas još nije završen nijedan nalog.",
+        "jobs_done": "Završenih naloga",
+        "total_spent": "Ukupno kod nas",
+        "last_service": "Poslednji dolazak",
+        "vin_hint": "Nije obavezan. Jedan broj šasije — jedno vozilo u radionici.",
+        "owners": "Vlasnici",
+        "no_owners": "Nijedan vlasnik još nije zabeležen.",
+        "current_owner": "Trenutni",
+        "until_today": "danas",
+        "change_owner": "Promeni vlasnika",
+        "change_owner_hint": "Prethodnom vlasniku ostaju nalozi napisani dok je vozilo bilo njegovo.",
+        "new_owner": "Novi vlasnik",
+        "changed_hands_on": "Datum promene",
+        "today_when_empty": "Ako ostavite prazno, uzima se današnji datum.",
+        "owner_note_placeholder": "Prodato, nasleđeno, vraćen službeni automobil",
+        "owner_changed": "Vozilo ima novog vlasnika."
     },
     "workshop": {
         "subtitle": "{{count}} naloga",
@@ -402,10 +426,9 @@
         "annual_required": "Za servis je potrebna godišnja kilometraža.",
         "labour": "Rad",
         "labour_cost": "Cena rada",
-        "labour_hint": "Sati puta cena sata, ili fiksni iznos čim se upišu sati. Prepisano iz podešavanja servisa kad je nalog otvoren; ovde se menja samo za ovaj nalog.",
+        "labour_hint": "Broj sati puta cena sata. Sate ostavite prazne dok se na vozilu ne radi.",
         "no_orders": "Ovo vozilo još nije bilo u radionici.",
         "parts_total": "Delovi",
-        "print_quote": "Predračun",
         "confirm_cancel": "Zašto se nalog otkazuje?",
         "reason_placeholder": "Dovoljna je rečenica — ostaje zabeležena.",
         "transition": {
@@ -427,7 +450,13 @@
             "timing_belt_kit": "Set zupčastog kaiša",
             "v_belt_kit": "Set PK kaiša",
             "water_pump": "Vodena pumpa"
-        }
+        },
+        "quote": "predračun",
+        "invoice": "račun",
+        "print_document": "Štampaj {{document}}",
+        "fixed_price": "Fiksna cena za ceo posao",
+        "labour_hint_fixed": "Dogovorena cena posla, bez obzira na to koliko sati potraje.",
+        "labour_unsaved": "Nije sačuvano — na nalogu i dalje stoji {{saved}}."
     },
     "attachments": {
         "title": "Fajlovi",
@@ -476,6 +505,16 @@
             "title": "Jezik i kontakt",
             "hint": "Novi klijenti dobijaju ovaj jezik dok ne kažu drugačije. Telefon i email se štampaju u svakom podsetniku.",
             "default_language": "Podrazumevani jezik"
+        },
+        "logo_saved": "Logo je sačuvan.",
+        "logo_removed": "Logo je uklonjen.",
+        "logo": {
+            "title": "Logo",
+            "hint": "Prikazuje se u meniju umesto naziva radionice. PNG, JPEG, WebP ili SVG, do 2 MB.",
+            "upload": "Otpremi logo",
+            "replace": "Zameni",
+            "too_large": "Logo mora biti manji od 2 MB.",
+            "confirm_remove": "Ukloniti logo i vratiti naziv?"
         }
     },
     "locations": {
@@ -516,5 +555,12 @@
         "recent_orders": "Poslednji nalozi",
         "all_orders": "Svi nalozi",
         "nothing_yet": "Još ništa."
+    },
+    "documents": {
+        "send_title": "Pošalji {{document}}",
+        "send_hint": "Ako ostavite prazno, ide na adresu koju klijent ima kod nas, na njegovom jeziku.",
+        "customer_address": "Adresa klijenta",
+        "customer_language": "Jezik klijenta",
+        "sent": "Poslato na {{recipient}}."
     }
 }

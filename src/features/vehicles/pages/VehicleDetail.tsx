@@ -30,6 +30,8 @@ import { pathTo, Routes } from 'routes/config'
 import { formatDate, formatDateTime, formatMoney, formatNumber } from 'utils/format'
 import MaintenanceCard from '../components/MaintenanceCard'
 import MileageModal from '../components/MileageModal'
+import OwnersCard from '../components/OwnersCard'
+import ServiceBookCard from '../components/ServiceBookCard'
 import VehicleForm from '../components/VehicleForm'
 import useVehicleMutation from '../hooks/useVehicleMutation'
 import { vehicleKeys, vehiclesApi } from '../utils/api'
@@ -92,7 +94,7 @@ const VehicleDetail = () => {
     if (vehicle.error) return <ErrorBlock error={vehicle.error} />
     if (vehicle.isLoading || !vehicle.data) return <Skeleton active />
 
-    const { summary, customer, maintenance, reminders } = vehicle.data
+    const { summary, customer, maintenance, reminders, owners } = vehicle.data
 
     const columns: TableProps<ServiceOrderSummary>['columns'] = [
         { title: t('fields.opened_at'), dataIndex: 'openedAt', width: 150, render: formatDateTime },
@@ -192,6 +194,14 @@ const VehicleDetail = () => {
                     />
                 </Col>
                 <Col xs={24}>
+                    {/* What the customer is handed: the work that is actually finished. */}
+                    <ServiceBookCard
+                        vehicleId={summary.id}
+                        customerEmail={customer.email}
+                        onOpenOrder={setOpenOrderId}
+                    />
+                </Col>
+                <Col xs={24} lg={14}>
                     <Card title={t('vehicles.history')}>
                         <Table<ServiceOrderSummary>
                             rowKey={'id'}
@@ -204,6 +214,9 @@ const VehicleDetail = () => {
                             onRow={(row) => ({ onClick: () => setOpenOrderId(row.id), style: { cursor: 'pointer' } })}
                         />
                     </Card>
+                </Col>
+                <Col xs={24} lg={10}>
+                    <OwnersCard vehicleId={summary.id} currentCustomerId={customer.id} owners={owners} />
                 </Col>
             </Row>
 

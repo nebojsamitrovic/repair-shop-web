@@ -20,6 +20,8 @@ export interface TenantSummary {
     name: string
     slug: string
     status: 'ACTIVE' | 'SUSPENDED'
+    /** Short-lived signed link to the garage's logo; absent until one is uploaded. */
+    logoUrl?: string | null
 }
 
 export interface CurrentUser {
@@ -70,6 +72,18 @@ export interface LocationRequest {
     email?: string
 }
 
+/** Where to PUT the logo, and the key to register it under afterwards. */
+export interface LogoUpload {
+    uploadUrl: string
+    storageKey: string
+    expiresAt: string
+}
+
+export interface GarageLogo {
+    /** Short-lived link to the logo, or absent when the garage is shown by name. */
+    url?: string | null
+}
+
 export interface GarageSettings {
     smallServiceIntervalKm: number
     bigServiceIntervalKm: number
@@ -116,7 +130,7 @@ export interface CustomerRequest {
 export const FUEL_TYPES = ['PETROL', 'DIESEL', 'HYBRID', 'ELECTRIC', 'LPG', 'CNG', 'OTHER'] as const
 export type FuelType = (typeof FUEL_TYPES)[number]
 
-export const SERVICE_TYPES = ['SMALL_SERVICE', 'BIG_SERVICE', 'REPAIR'] as const
+export const SERVICE_TYPES = ['SMALL_SERVICE', 'BIG_SERVICE', 'REPAIR', 'DIAGNOSTICS'] as const
 export type ServiceType = (typeof SERVICE_TYPES)[number]
 
 export interface VehicleSummary {
@@ -163,12 +177,33 @@ export interface ServiceReminder {
     sentAt: string
 }
 
+/** One owner of a car, and for how long they had it. */
+export interface VehicleOwner {
+    id: string
+    customerId: string
+    customerName?: string | null
+    ownedFrom: string
+    /** Absent while this is the owner. */
+    ownedUntil?: string | null
+    current: boolean
+    note?: string | null
+}
+
 export interface VehicleDetail {
     summary: VehicleSummary
     customer: CustomerView
     notes?: string | null
     maintenance: Maintenance
     reminders: ServiceReminder[]
+    /** Every owner the garage has known, newest first. */
+    owners: VehicleOwner[]
+}
+
+export interface ChangeOwnerRequest {
+    customerId: string
+    /** The day it changed hands; today when omitted. */
+    on?: string
+    note?: string
 }
 
 export interface CreateVehicleRequest {
@@ -295,6 +330,10 @@ export interface OpenServiceOrderRequest {
     annualMileage?: number
     description?: string
     labourHours?: number
+    /** How this job is priced; the garage's setting when omitted. */
+    labourPricingMode?: LabourPricingMode
+    /** Per hour, or the agreed price of the job under FIXED. */
+    labourRate?: number
     parts?: ServicePartRequest[]
 }
 
@@ -309,6 +348,51 @@ export interface UpdateServiceOrderRequest {
     labourRate?: number
     /** Replaces the whole list when present. */
     parts?: ServicePartRequest[]
+}
+
+/** One finished job as the service book lists it. */
+export interface ServiceBookEntry {
+    orderId: string
+    type: ServiceType
+    /** The day the work was finished. */
+    on: string
+    mileage?: number | null
+    description?: string | null
+    closingNote?: string | null
+    mechanicName?: string | null
+    locationName?: string | null
+    parts: ServicePart[]
+    labourCost: number
+    partsTotal: number
+    total: number
+}
+
+/** The car's history of finished work: what the customer is handed or emailed. */
+export interface ServiceBook {
+    vehicleId: string
+    vehicleLabel: string
+    registrationPlate: string
+    vin?: string | null
+    customerId?: string | null
+    customerName?: string | null
+    mileage?: number | null
+    currency: string
+    serviceCount: number
+    totalSpent: number
+    firstServiceOn?: string | null
+    lastServiceOn?: string | null
+    entries: ServiceBookEntry[]
+    generatedAt: string
+}
+
+export interface SendDocumentRequest {
+    /** The customer's address on file when omitted. */
+    to?: string
+    lang?: Locale
+}
+
+export interface DocumentSent {
+    recipient: string
 }
 
 export interface AddAttachmentRequest {

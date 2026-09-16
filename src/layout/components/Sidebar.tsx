@@ -35,11 +35,22 @@ const icons: Record<NavigationItem['icon'], ReactNode> = {
     key: <KeyOutlined />,
 }
 
+/** Two letters for a collapsed rail: "Auto Centar Nikolić" becomes "AN". */
+const initials = (name?: string) =>
+    (name ?? '')
+        .split(/\s+/)
+        .filter(Boolean)
+        .slice(0, 2)
+        .map((word) => word[0]?.toUpperCase() ?? '')
+        .join('')
+
 const Sidebar = ({ collapsed }: { collapsed: boolean }) => {
     const { t } = useTranslation()
     const navigate = useNavigate()
     const location = useLocation()
-    const { canAny } = useSession()
+    const { canAny, user } = useSession()
+
+    const tenant = user?.tenant
 
     /* The menu filters itself: an entry whose permission the user lacks is never rendered. */
     const items: ItemType<MenuItemType>[] = navigation
@@ -66,20 +77,41 @@ const Sidebar = ({ collapsed }: { collapsed: boolean }) => {
 
     return (
         <Layout.Sider collapsible collapsed={collapsed} trigger={null} width={236}>
+            {/* The garage's own mark where it has one; its name where it does not. Neither is the
+                product's name: the people using this work here, and this is their shop. */}
             <div
                 style={{
                     height: 52,
                     display: 'flex',
                     alignItems: 'center',
+                    gap: 10,
                     paddingInline: collapsed ? 0 : 20,
                     justifyContent: collapsed ? 'center' : 'flex-start',
                     color: palette.text,
                     fontWeight: 600,
                     fontSize: 15,
                     letterSpacing: '-0.01em',
+                    overflow: 'hidden',
                 }}
+                title={tenant?.name}
             >
-                {collapsed ? 'RS' : 'RepairShop'}
+                {tenant?.logoUrl ? (
+                    <img
+                        src={tenant.logoUrl}
+                        alt={tenant.name}
+                        style={{ maxHeight: 28, maxWidth: collapsed ? 32 : 180, objectFit: 'contain' }}
+                    />
+                ) : (
+                    <span
+                        style={{
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                        }}
+                    >
+                        {collapsed ? initials(tenant?.name) : (tenant?.name ?? '')}
+                    </span>
+                )}
             </div>
             <Menu
                 mode={'inline'}
