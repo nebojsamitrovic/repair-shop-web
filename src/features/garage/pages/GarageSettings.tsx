@@ -15,6 +15,7 @@ import { useMutation, useQuery } from 'hooks'
 import useEnumLabel from 'lang/useEnumLabel'
 import { formatMoney } from 'utils/format'
 import LogoCard from '../components/LogoCard'
+import ViberCard from '../components/ViberCard'
 import { garageApi, garageKeys } from '../utils/api'
 
 /**
@@ -63,6 +64,9 @@ const GarageSettings = () => {
 
             <div style={{ marginBottom: 16 }}>
                 <LogoCard editable={editable} />
+            </div>
+            <div style={{ marginBottom: 16 }}>
+                <ViberCard editable={editable} />
             </div>
 
             <Form<UpdateGarageSettingsRequest>

@@ -83,6 +83,14 @@ const CustomerDrawer = ({ open, customer, onClose, onSaved }: Props) => {
                 <Form.Item name={'phone'} label={t('fields.phone')} rules={[{ max: 64 }]}>
                     <Input autoComplete={'off'} />
                 </Form.Item>
+                <Form.Item
+                    name={'viberId'}
+                    label={t('fields.viber_id')}
+                    extra={t('customers.viber_hint')}
+                    rules={[{ max: 64 }]}
+                >
+                    <Input autoComplete={'off'} />
+                </Form.Item>
                 <Form.Item name={'locale'} label={t('fields.language')} extra={t('customers.locale_hint')}>
                     <Select
                         allowClear

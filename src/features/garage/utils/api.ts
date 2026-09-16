@@ -1,6 +1,9 @@
 import { api } from 'api/client'
 import type {
+    ConfigureViberRequest,
     GarageLogo,
+    ViberSettings,
+    ViberWebhook,
     GarageSettings,
     LocationRequest,
     LocationView,
@@ -18,6 +21,9 @@ export const garageApi = {
         (await api.post<LogoUpload>('/settings/logo/upload-url', body)).data,
     changeLogo: async (storageKey: string) => (await api.put<GarageLogo>('/settings/logo', { storageKey })).data,
     removeLogo: async () => (await api.delete<GarageLogo>('/settings/logo')).data,
+    viber: async () => (await api.get<ViberSettings>('/settings/viber')).data,
+    configureViber: async (body: ConfigureViberRequest) => (await api.put<ViberSettings>('/settings/viber', body)).data,
+    registerViberWebhook: async () => (await api.post<ViberWebhook>('/settings/viber/webhook')).data,
 
     locations: async () => (await api.get<LocationView[]>('/locations')).data,
     createLocation: async (body: LocationRequest) => (await api.post<LocationView>('/locations', body)).data,
@@ -30,4 +36,5 @@ export const garageApi = {
 export const garageKeys = {
     settings: ['garage', 'settings'] as const,
     locations: ['garage', 'locations'] as const,
+    viber: ['garage', 'viber'] as const,
 }

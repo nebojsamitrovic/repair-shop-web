@@ -182,7 +182,8 @@
         "part_number": "Kataloški broj",
         "condition": "Stanje",
         "fits": "Odgovara za",
-        "user": "Ko"
+        "user": "Ko",
+        "viber_id": "Viber id"
     },
     "errors": {
         "AUTH_NOT_CONFIGURED": "Backend nema podešene Firebase kredencijale, pa niko ne može da se prijavi.",
@@ -394,7 +395,10 @@
         "company_hint": "Za službeno vozilo: firma se piše na predračunu, a osoba, ako je uneta, u zagradi.",
         "email_hint": "Ovde stižu podsetnici za servis. Bez adrese klijentu se ne piše.",
         "locale_hint": "Jezik na kom se pišu podsetnici i predračun.",
-        "locale_default": "Jezik servisa"
+        "locale_default": "Jezik servisa",
+        "viber_hint": "Popunjava se samo kad klijent otvori Viber bota servisa preko linka sa svoje stranice.",
+        "viber_linked": "Povezan",
+        "viber_link": "Kopiraj link za povezivanje"
     },
     "vehicles": {
         "subtitle": "{{count}} vozila",
@@ -553,6 +557,21 @@
             "replace": "Zameni",
             "too_large": "Logo mora biti manji od 2 MB.",
             "confirm_remove": "Ukloniti logo i vratiti naziv?"
+        },
+        "viber": {
+            "hint": "Sopstveni Viber bot, pored mejla: podsetnici, termini, završeni radovi i link predračuna idu i tamo, klijentima koji su otvorili bota. Napravite bota u Viber admin panelu i nalepite token ovde.",
+            "enabled": "Šalji na Viber",
+            "on": "uključen",
+            "off": "isključen",
+            "token": "Token bota",
+            "token_set": "Token je upisan. Nalepite novi da ga zamenite.",
+            "token_hint": "Sa stranice bota u Viber admin panelu.",
+            "bot_uri": "Javno ime bota (URI)",
+            "bot_uri_hint": "Ono što ide posle viber://pa?chatURI= — link za klijente otvara ovog bota.",
+            "webhook": "Webhook",
+            "register_webhook": "Prijavi webhook Viberu",
+            "saved": "Viber podešavanja su sačuvana.",
+            "webhook_registered": "Viber je odgovorio: {{answer}}"
         }
     },
     "locations": {

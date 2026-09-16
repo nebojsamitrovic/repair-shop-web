@@ -111,6 +111,10 @@ export interface CustomerView {
     displayName: string
     email?: string | null
     phone?: string | null
+    /** Their Viber subscriber id; set once they opened the garage's bot. */
+    viberId?: string | null
+    /** viber://pa?… link that opens the garage's bot as this customer; absent when Viber is off. */
+    viberLink?: string | null
     locale: Locale
     notes?: string | null
     vehicleCount: number
@@ -125,6 +129,27 @@ export interface CustomerRequest {
     phone?: string
     locale?: Locale
     notes?: string
+    viberId?: string
+}
+
+export interface ViberSettings {
+    enabled: boolean
+    /** The token itself is never returned. */
+    tokenSet: boolean
+    botUri?: string | null
+    webhookUrl: string
+}
+
+export interface ConfigureViberRequest {
+    enabled: boolean
+    /** Omitted keeps the token on record; empty removes it. */
+    authToken?: string
+    botUri?: string
+}
+
+export interface ViberWebhook {
+    url: string
+    answer: string
 }
 
 export const FUEL_TYPES = ['PETROL', 'DIESEL', 'HYBRID', 'ELECTRIC', 'LPG', 'CNG', 'OTHER'] as const

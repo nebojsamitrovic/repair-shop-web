@@ -182,7 +182,8 @@
         "part_number": "Part number",
         "condition": "Condition",
         "fits": "Fits",
-        "user": "Who"
+        "user": "Who",
+        "viber_id": "Viber id"
     },
     "errors": {
         "AUTH_NOT_CONFIGURED": "The backend has no Firebase credentials configured, so nobody can sign in.",
@@ -391,7 +392,10 @@
         "company_hint": "For a company car: the company is named on the quote and the person, if given, in brackets.",
         "email_hint": "Where the service reminders go. Without it the customer is not written to.",
         "locale_hint": "The language reminders and the quote are written in.",
-        "locale_default": "The garage's language"
+        "locale_default": "The garage's language",
+        "viber_hint": "Filled in by itself when the customer opens the garage's Viber bot from the link on their page.",
+        "viber_linked": "Connected",
+        "viber_link": "Copy the link that connects them"
     },
     "vehicles": {
         "subtitle": "{{count}} cars",
@@ -550,6 +554,21 @@
             "replace": "Replace",
             "too_large": "A logo has to be under 2 MB.",
             "confirm_remove": "Remove the logo and go back to the name?"
+        },
+        "viber": {
+            "hint": "Your own Viber bot, next to email: reminders, bookings, finished work and the quote's link go there too, to customers who have opened the bot. Create the bot in Viber's admin panel and paste its token here.",
+            "enabled": "Send on Viber",
+            "on": "on",
+            "off": "off",
+            "token": "Bot token",
+            "token_set": "A token is on record. Paste a new one to replace it.",
+            "token_hint": "From the bot's page in Viber's admin panel.",
+            "bot_uri": "Bot's public name (URI)",
+            "bot_uri_hint": "What comes after viber://pa?chatURI= — the customers' link opens this bot.",
+            "webhook": "Webhook",
+            "register_webhook": "Register the webhook with Viber",
+            "saved": "Viber settings saved.",
+            "webhook_registered": "Viber answered: {{answer}}"
         }
     },
     "locations": {

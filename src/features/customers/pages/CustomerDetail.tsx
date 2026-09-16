@@ -86,6 +86,17 @@ const CustomerDetail = () => {
                             </Descriptions.Item>
                             <Descriptions.Item label={t('fields.email')}>{person.email ?? '—'}</Descriptions.Item>
                             <Descriptions.Item label={t('fields.phone')}>{person.phone ?? '—'}</Descriptions.Item>
+                            <Descriptions.Item label={'Viber'}>
+                                {person.viberId ? (
+                                    <Tag color={'green'}>{t('customers.viber_linked')}</Tag>
+                                ) : person.viberLink ? (
+                                    <Typography.Text copyable={{ text: person.viberLink }}>
+                                        {t('customers.viber_link')}
+                                    </Typography.Text>
+                                ) : (
+                                    '—'
+                                )}
+                            </Descriptions.Item>
                             <Descriptions.Item label={t('fields.language')}>
                                 <Tag>{enumLabel('locale', person.locale)}</Tag>
                             </Descriptions.Item>
