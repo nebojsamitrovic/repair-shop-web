@@ -18,6 +18,7 @@ import { Routes } from './config'
 const Dashboard = lazy(async () => await import('features/dashboard/pages/Dashboard'))
 const Workshop = lazy(async () => await import('features/workshop/pages/Workshop'))
 const Appointments = lazy(async () => await import('features/appointments/pages/Appointments'))
+const Stock = lazy(async () => await import('features/stock/pages/Stock'))
 const PublicQuote = lazy(async () => await import('features/quotes/pages/PublicQuote'))
 const Vehicles = lazy(async () => await import('features/vehicles/pages/Vehicles'))
 const VehicleDetail = lazy(async () => await import('features/vehicles/pages/VehicleDetail'))
@@ -95,6 +96,10 @@ const AppRoutes = () => {
                 <Route element={<ProtectedRoute permissions={Routes.Workshop.permissions} />}>
                     <Route path={Routes.Workshop.path} element={<Workshop />} />
                     <Route path={Routes.Appointments.path} element={<Appointments />} />
+                </Route>
+
+                <Route element={<ProtectedRoute permissions={Routes.Stock.permissions} />}>
+                    <Route path={Routes.Stock.path} element={<Stock />} />
                 </Route>
 
                 <Route element={<ProtectedRoute permissions={Routes.VehicleNew.permissions} />}>

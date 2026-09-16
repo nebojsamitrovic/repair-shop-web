@@ -7,6 +7,7 @@ export interface NavigationItem {
         | 'dashboard'
         | 'tool'
         | 'calendar'
+        | 'inbox'
         | 'car'
         | 'team'
         | 'book'
@@ -34,6 +35,7 @@ export const navigation: NavigationGroup[] = [
             { key: 'dashboard', labelKey: 'nav.dashboard', icon: 'dashboard', route: Routes.Dashboard },
             { key: 'workshop', labelKey: 'nav.workshop', icon: 'tool', route: Routes.Workshop },
             { key: 'appointments', labelKey: 'nav.appointments', icon: 'calendar', route: Routes.Appointments },
+            { key: 'stock', labelKey: 'nav.stock', icon: 'inbox', route: Routes.Stock },
             { key: 'vehicles', labelKey: 'nav.vehicles', icon: 'car', route: Routes.Vehicles },
             { key: 'customers', labelKey: 'nav.customers', icon: 'team', route: Routes.Customers },
             { key: 'notes', labelKey: 'nav.notes', icon: 'book', route: Routes.Notes },

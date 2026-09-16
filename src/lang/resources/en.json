@@ -178,7 +178,12 @@
         "note": "Note",
         "time": "Time",
         "duration_minutes": "Duration (min)",
-        "item": "Item"
+        "item": "Item",
+        "part_number": "Part number",
+        "condition": "Condition",
+        "fits": "Fits",
+        "unit_cost": "Cost each",
+        "user": "Who"
     },
     "errors": {
         "AUTH_NOT_CONFIGURED": "The backend has no Firebase credentials configured, so nobody can sign in.",
@@ -244,6 +249,17 @@
             "CONVERTED": "Came in",
             "CANCELLED": "Cancelled",
             "NO_SHOW": "No show"
+        },
+        "stock_condition": {
+            "USED": "Used",
+            "REFURBISHED": "Refurbished",
+            "NEW": "New"
+        },
+        "movement_kind": {
+            "RECEIVED": "Received",
+            "FITTED": "Fitted",
+            "RETURNED": "Returned",
+            "ADJUSTED": "Counted"
         }
     },
     "_replace": [
@@ -264,7 +280,8 @@
         "audit_log": "Audit log",
         "notifications": "Notifications",
         "dashboard": "Dashboard",
-        "appointments": "Appointments"
+        "appointments": "Appointments",
+        "stock": "Stock"
     },
     "pages": {
         "login": {
@@ -332,6 +349,9 @@
         },
         "public_quote": {
             "title": "Quote"
+        },
+        "stock": {
+            "title": "Stock"
         }
     },
     "login": {
@@ -604,5 +624,27 @@
         "approved_title": "Quote accepted",
         "approved_text": "Accepted by {{by}} on {{at}} at {{total}}. The garage has been told.",
         "closed": "This quote can no longer be accepted; the work is finished or the order was closed."
+    },
+    "stock": {
+        "subtitle": "{{count}} parts on the shelf",
+        "add": "Add a part",
+        "edit": "Edit part",
+        "created": "Part added.",
+        "updated": "Stock updated.",
+        "removed": "Part taken off the list.",
+        "confirm_remove": "Take this part off the list? Orders that used it keep their lines.",
+        "search_placeholder": "Name, part number, what it fits, where it came from",
+        "in_stock_only": "In stock only",
+        "receive": "Receive",
+        "count": "Count",
+        "received_quantity": "How many came in",
+        "counted_quantity": "How many are actually there",
+        "cost_hint": "Becomes the cost on record; leave empty to keep it.",
+        "on_shelf": "{{quantity}} on the shelf",
+        "name_placeholder": "Alternator Bosch 120A",
+        "fits_hint": "Free text for searching — make, model, engine, years.",
+        "source_placeholder": "Taken off a Golf V 2007, BG-123-AB",
+        "from_shelf": "stock",
+        "pick_from_shelf": "Add from stock"
     }
 }

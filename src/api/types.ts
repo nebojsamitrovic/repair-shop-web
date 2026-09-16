@@ -264,6 +264,8 @@ export interface ServicePart {
     quantity: number
     unitPrice: number
     amount: number
+    /** The part on the shelf this line took, when it did. */
+    stockItemId?: string | null
 }
 
 /** What is sent: no amount, the backend computes it. */
@@ -271,6 +273,8 @@ export interface ServicePartRequest {
     description: string
     quantity: number
     unitPrice?: number
+    /** Set when the part comes off the shelf; the backend takes it from stock. */
+    stockItemId?: string
 }
 
 export interface ServiceAttachment {
@@ -485,6 +489,70 @@ export interface ArrivalRequest {
     mileage?: number
     annualMileage?: number
     description?: string
+}
+
+/* ---------- stock ---------- */
+
+export const STOCK_CONDITIONS = ['USED', 'REFURBISHED', 'NEW'] as const
+export type StockCondition = (typeof STOCK_CONDITIONS)[number]
+
+export const MOVEMENT_KINDS = ['RECEIVED', 'FITTED', 'RETURNED', 'ADJUSTED'] as const
+export type MovementKind = (typeof MOVEMENT_KINDS)[number]
+
+export interface StockItem {
+    id: string
+    name: string
+    partNumber?: string | null
+    fits?: string | null
+    condition: StockCondition
+    quantity: number
+    unitCost?: number | null
+    unitPrice: number
+    currency: string
+    source?: string | null
+    note?: string | null
+    locationId?: string | null
+    locationName?: string | null
+    createdAt: string
+    updatedAt: string
+}
+
+export interface StockMovement {
+    id: string
+    kind: MovementKind
+    /** Signed: what the shelf gained or lost. */
+    quantity: number
+    serviceOrderId?: string | null
+    userId?: string | null
+    userName?: string | null
+    note?: string | null
+    at: string
+}
+
+export interface CreateStockItemRequest {
+    name: string
+    partNumber?: string
+    fits?: string
+    condition?: StockCondition
+    quantity?: number
+    unitCost?: number
+    unitPrice: number
+    source?: string
+    note?: string
+    locationId?: string
+}
+
+export type UpdateStockItemRequest = Partial<Omit<CreateStockItemRequest, 'quantity'>>
+
+export interface ReceiveStockRequest {
+    quantity: number
+    unitCost?: number
+    note?: string
+}
+
+export interface CountStockRequest {
+    counted: number
+    note?: string
 }
 
 /* ---------- notes ---------- */

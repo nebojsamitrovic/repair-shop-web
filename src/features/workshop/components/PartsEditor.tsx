@@ -1,10 +1,13 @@
-import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons'
-import { Button, Flex, Input, InputNumber, Typography } from 'antd'
+import { InboxOutlined, MinusCircleOutlined, PlusOutlined } from '@ant-design/icons'
+import { Button, Flex, Input, InputNumber, Select, Tag, Typography } from 'antd'
 import { useTranslation } from 'react-i18next'
 
-import type { ServicePartRequest } from 'api/types'
+import type { ServicePartRequest, StockItem } from 'api/types'
+import { stockApi, stockKeys } from 'features/stock/utils/api'
+import { useQuery } from 'hooks'
+import { useSession } from 'auth/session'
 import { palette } from 'theme'
-import { formatMoney } from 'utils/format'
+import { formatMoney, formatNumber } from 'utils/format'
 
 interface Props {
     /** Optional so the editor also works as an antd Form.Item child, which injects both. */
@@ -21,6 +24,16 @@ interface Props {
  */
 const PartsEditor = ({ value = [], onChange = () => {}, currency, disabled = false }: Props) => {
     const { t } = useTranslation()
+    const { can } = useSession()
+    const shelf = useQuery({
+        queryKey: stockKeys.shelf,
+        queryFn: async () => await stockApi.list({ inStockOnly: true, size: 200, sort: 'name,asc' }),
+        enabled: can('stock:read'),
+        staleTime: 60_000,
+    })
+    const shelfItems = shelf.data?.items ?? []
+    const fromShelf = (item: StockItem) =>
+        onChange([...value, { description: item.name, quantity: 1, unitPrice: item.unitPrice, stockItemId: item.id }])
 
     const update = (index: number, patch: Partial<ServicePartRequest>) =>
         onChange(value.map((part, i) => (i === index ? { ...part, ...patch } : part)))
@@ -54,6 +67,9 @@ const PartsEditor = ({ value = [], onChange = () => {}, currency, disabled = fal
                         disabled={disabled}
                         placeholder={t('fields.part')}
                         maxLength={255}
+                        suffix={
+                            part.stockItemId ? <Tag style={{ marginInlineEnd: 0 }}>{t('stock.from_shelf')}</Tag> : null
+                        }
                         onChange={(event) => update(index, { description: event.target.value })}
                     />
                     <InputNumber
@@ -87,10 +103,34 @@ const PartsEditor = ({ value = [], onChange = () => {}, currency, disabled = fal
                 </Flex>
             ))}
 
-            <Flex justify={'space-between'} align={'center'}>
-                <Button type={'dashed'} icon={<PlusOutlined />} disabled={disabled} onClick={add}>
-                    {t('workshop.add_part')}
-                </Button>
+            <Flex justify={'space-between'} align={'center'} gap={8} wrap>
+                <Flex gap={8}>
+                    <Button type={'dashed'} icon={<PlusOutlined />} disabled={disabled} onClick={add}>
+                        {t('workshop.add_part')}
+                    </Button>
+                    {shelfItems.length > 0 ? (
+                        <Select
+                            showSearch
+                            disabled={disabled}
+                            value={null}
+                            placeholder={
+                                <>
+                                    <InboxOutlined /> {t('stock.pick_from_shelf')}
+                                </>
+                            }
+                            style={{ minWidth: 260 }}
+                            optionFilterProp={'label'}
+                            onChange={(itemId: string) => {
+                                const item = shelfItems.find((candidate) => candidate.id === itemId)
+                                if (item) fromShelf(item)
+                            }}
+                            options={shelfItems.map((item) => ({
+                                value: item.id,
+                                label: `${item.name}${item.fits ? ` · ${item.fits}` : ''} — ${formatNumber(item.quantity)} × ${formatMoney(item.unitPrice, item.currency)}`,
+                            }))}
+                        />
+                    ) : null}
+                </Flex>
                 <Typography.Text strong>
                     {t('workshop.parts_total')}: {formatMoney(total, currency)}
                 </Typography.Text>

@@ -12,6 +12,7 @@ export const Routes = {
 
     Workshop: { path: '/workshop', pageTitle: 'pages.workshop.title', permissions: ['service:read'] },
     Appointments: { path: '/appointments', pageTitle: 'pages.appointments.title', permissions: ['service:read'] },
+    Stock: { path: '/stock', pageTitle: 'pages.stock.title', permissions: ['stock:read'] },
 
     Vehicles: { path: '/vehicles', pageTitle: 'pages.vehicles.title', permissions: ['vehicle:read'] },
     VehicleNew: { path: '/vehicles/new', pageTitle: 'pages.vehicle_new.title', permissions: ['vehicle:create'] },

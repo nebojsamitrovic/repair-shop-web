@@ -117,7 +117,7 @@
         "power_kw": "Snaga (kW)",
         "capacity_ccm": "Zapremina (ccm)",
         "purchase_price": "Nabavna cena",
-        "source": "Izvor",
+        "source": "Poreklo",
         "sent_at": "Poslato",
         "resolved_at": "Rešeno",
         "estimated_price": "Procenjena cena",
@@ -178,7 +178,12 @@
         "note": "Napomena",
         "time": "Vreme",
         "duration_minutes": "Trajanje (min)",
-        "item": "Stavka"
+        "item": "Stavka",
+        "part_number": "Kataloški broj",
+        "condition": "Stanje",
+        "fits": "Odgovara za",
+        "unit_cost": "Nabavna cena",
+        "user": "Ko"
     },
     "errors": {
         "AUTH_NOT_CONFIGURED": "Backend nema podešene Firebase kredencijale, pa niko ne može da se prijavi.",
@@ -244,6 +249,17 @@
             "CONVERTED": "Došao",
             "CANCELLED": "Otkazan",
             "NO_SHOW": "Nije došao"
+        },
+        "stock_condition": {
+            "USED": "Polovan",
+            "REFURBISHED": "Reparisan",
+            "NEW": "Nov"
+        },
+        "movement_kind": {
+            "RECEIVED": "Primljeno",
+            "FITTED": "Ugrađeno",
+            "RETURNED": "Vraćeno",
+            "ADJUSTED": "Popis"
         }
     },
     "_replace": [
@@ -267,7 +283,8 @@
         "audit_log": "Istorija izmena",
         "notifications": "Obaveštenja",
         "dashboard": "Pregled",
-        "appointments": "Termini"
+        "appointments": "Termini",
+        "stock": "Magacin"
     },
     "pages": {
         "login": {
@@ -335,6 +352,9 @@
         },
         "public_quote": {
             "title": "Predračun"
+        },
+        "stock": {
+            "title": "Magacin"
         }
     },
     "login": {
@@ -607,5 +627,27 @@
         "approved_title": "Predračun je prihvaćen",
         "approved_text": "Prihvatio {{by}}, {{at}}, na iznos {{total}}. Servis je obavešten.",
         "closed": "Ovaj predračun više ne može da se prihvati: radovi su završeni ili je nalog zatvoren."
+    },
+    "stock": {
+        "subtitle": "{{count}} delova na polici",
+        "add": "Novi deo",
+        "edit": "Izmena dela",
+        "created": "Deo je dodat.",
+        "updated": "Magacin je ažuriran.",
+        "removed": "Deo je skinut sa liste.",
+        "confirm_remove": "Skinuti ovaj deo sa liste? Nalozi na kojima je ugrađen ostaju.",
+        "search_placeholder": "Naziv, kataloški broj, za koji auto, poreklo",
+        "in_stock_only": "Samo na stanju",
+        "receive": "Prijem",
+        "count": "Popis",
+        "received_quantity": "Koliko je stiglo",
+        "counted_quantity": "Koliko stvarno ima",
+        "cost_hint": "Postaje nabavna cena na evidenciji; prazno je zadržava.",
+        "on_shelf": "{{quantity}} na polici",
+        "name_placeholder": "Alternator Bosch 120A",
+        "fits_hint": "Slobodan tekst za pretragu — marka, model, motor, godišta.",
+        "source_placeholder": "Skinut sa Golf V 2007, BG-123-AB",
+        "from_shelf": "magacin",
+        "pick_from_shelf": "Dodaj iz magacina"
     }
 }
