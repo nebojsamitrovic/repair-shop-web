@@ -629,7 +629,7 @@
     },
     "stock": {
         "subtitle": "{{count}} delova na polici",
-        "add": "Novi deo",
+        "add": "Dodaj deo",
         "edit": "Izmena dela",
         "created": "Deo je dodat.",
         "updated": "Magacin je ažuriran.",
