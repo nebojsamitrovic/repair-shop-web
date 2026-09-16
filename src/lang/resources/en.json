@@ -358,23 +358,23 @@
         "title": "Sign in",
         "submit": "Sign in",
         "failed": "Wrong email address or password.",
-        "lead": "Your garage account.",
-        "headline": "The cars, the work and the customers who come back.",
-        "subheadline": "Every car's service history, every job priced your way, and a reminder to the customer before the next one is due.",
+        "lead": "Sign-in for garage staff.",
+        "headline": "Everything about the car in one place.",
+        "subheadline": "Orders, parts, invoices and a service book for every car. When the next service is near, the customer gets a message.",
         "invite_only": "Accounts are created by invitation — ask the owner of your garage for one.",
-        "footnote": "RepairShop OS — the workshop, the customers and the reminders, for garages.",
+        "footnote": "RepairShop OS — software for garages.",
         "highlights": {
             "workshop": {
-                "title": "The workshop, priced your way",
-                "body": "Small and major services and repairs, labour per hour or flat, parts, photographs and invoices on every order, and a quote to print."
+                "title": "Work orders",
+                "body": "Open an order, add parts from the shelf or a template, log the hours. The quote and the invoice print or go to the customer in one click."
             },
             "reminders": {
-                "title": "Customers who come back",
-                "body": "From the mileage and how far they drive in a year, the car says when its next service falls — and the customer hears about it in time."
+                "title": "Service reminders",
+                "body": "From the mileage the program works out when the next small or major service is due and tells the customer by email or Viber."
             },
             "notebook": {
-                "title": "The mechanics' notebook",
-                "body": "How that job on that car is done, with the pictures and documents, found again by make and model."
+                "title": "Mechanic's notes",
+                "body": "What was done, how, and on which car, with photos. Next time the same model comes in, it is all there."
             }
         }
     },

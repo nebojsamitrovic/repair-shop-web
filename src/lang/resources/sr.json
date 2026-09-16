@@ -361,23 +361,23 @@
         "title": "Prijava",
         "submit": "Prijavi se",
         "failed": "Pogrešna adresa ili lozinka.",
-        "lead": "Nalog vašeg servisa.",
-        "headline": "Vozila, radovi i klijenti koji se vraćaju.",
-        "subheadline": "Istorija servisa svakog vozila, svaki posao naplaćen kako vi radite, i podsetnik klijentu pre nego što stigne sledeći servis.",
+        "lead": "Prijava za zaposlene u servisu.",
+        "headline": "Sve o autu na jednom mestu.",
+        "subheadline": "Nalozi, delovi, računi i servisna knjižica za svako vozilo. Kad se približi sledeći servis, klijent dobija poruku.",
         "invite_only": "Nalozi se otvaraju pozivnicom — zatražite je od vlasnika servisa.",
-        "footnote": "RepairShop OS — radionica, klijenti i podsetnici, za auto-servise.",
+        "footnote": "RepairShop OS — program za auto-servise.",
         "highlights": {
             "workshop": {
-                "title": "Radionica, naplaćena kako vi radite",
-                "body": "Mali i veliki servisi i popravke, rad po satu ili fiksno, delovi, slike i računi na svakom nalogu, i predračun za štampu."
+                "title": "Radni nalozi",
+                "body": "Otvoriš nalog, ubaciš delove sa police ili iz šablona, upišeš sate. Predračun i račun se štampaju ili šalju klijentu jednim klikom."
             },
             "reminders": {
-                "title": "Klijenti koji se vraćaju",
-                "body": "Iz kilometraže i godišnje pređenog puta vozilo samo kaže kada mu stiže sledeći servis — a klijent to sazna na vreme."
+                "title": "Podsetnici za servis",
+                "body": "Na osnovu kilometraže program računa kad je vreme za mali ili veliki servis i javlja klijentu mejlom ili Viberom."
             },
             "notebook": {
-                "title": "Beležnica mehaničara",
-                "body": "Kako se koji posao radi na kom autu, sa slikama i dokumentima, i nađe se ponovo po marki i modelu."
+                "title": "Beleške mehaničara",
+                "body": "Šta je rađeno, kako i na kom autu, sa slikama. Sledeći put kad dođe isti model, sve je tu."
             }
         }
     },
