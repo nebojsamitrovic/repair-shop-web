@@ -21,7 +21,6 @@ const VehicleNew = () => {
         'vehicles.saved'
     )
 
-    /* Arriving from a customer's own page: the owner is already known. */
     useEffect(() => {
         const customerId = searchParams.get('customerId')
         if (customerId) form.setFieldsValue({ customerId })

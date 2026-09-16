@@ -57,10 +57,8 @@ const OpenOrderModal = ({ open, vehicleId, onClose, onOpened }: Props) => {
         })
     }, [open, vehicleId, form, locations, settings.data, t])
 
-    /* The list follows the type: a service starts with what a service usually needs, a repair with nothing. */
     const onTypeChange = (next: ServiceType) => form.setFieldValue('parts', partsTemplate(next, t))
 
-    /* The car's last known figures, so the desk corrects rather than retypes. */
     useEffect(() => {
         const vehicle = vehicles.find((item) => item.id === chosenVehicleId)
         if (!vehicle) return
@@ -160,7 +158,6 @@ const OpenOrderModal = ({ open, vehicleId, onClose, onOpened }: Props) => {
                     extra={t('vehicles.annual_hint')}
                     rules={[
                         {
-                            /* Only the two services move the maintenance clock, so only they ask. */
                             required: type === 'SMALL_SERVICE' || type === 'BIG_SERVICE',
                             message: t('workshop.annual_required'),
                         },
@@ -176,7 +173,6 @@ const OpenOrderModal = ({ open, vehicleId, onClose, onOpened }: Props) => {
                 <Form.Item name={'labourFixed'} valuePropName={'checked'} style={{ marginBottom: 12 }}>
                     <Checkbox
                         onChange={(event) =>
-                            /* A price per hour is not a price for the job; take the garage's own. */
                             form.setFieldValue(
                                 'labourRate',
                                 event.target.checked ? settings.data?.fixedRate : settings.data?.hourlyRate
@@ -217,7 +213,6 @@ const OpenOrderModal = ({ open, vehicleId, onClose, onOpened }: Props) => {
                 <Typography.Paragraph type={'secondary'} style={{ fontSize: 12 }}>
                     {t('workshop.parts_hint')}
                 </Typography.Paragraph>
-                {/* A controlled field like any other: the template is set on the form, the desk edits it. */}
                 <Form.Item name={'parts'} noStyle>
                     <PartsEditor currency={settings.data?.currency ?? 'EUR'} />
                 </Form.Item>

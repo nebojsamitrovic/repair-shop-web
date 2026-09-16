@@ -159,7 +159,6 @@ const Login = () => {
                             </Button>
                         </Form>
 
-                        {/* Accounts arrive by invitation, so there is nothing to sign up for here. */}
                         <Typography.Paragraph
                             type={'secondary'}
                             style={{ fontSize: 12, marginTop: 20, marginBottom: 0 }}

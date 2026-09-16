@@ -20,8 +20,6 @@ const VehicleForm = ({ form, editing = false, onFinish }: Props) => {
 
     return (
         <Form<CreateVehicleRequest> form={form} layout={'vertical'} requiredMark={false} onFinish={onFinish}>
-            {/* The owner is only chosen once, here. Afterwards the car changes hands, which is an
-                event with a day and a reason — "Change owner" on the car's page, not a field. */}
             {editing ? null : (
                 <Form.Item
                     name={'customerId'}

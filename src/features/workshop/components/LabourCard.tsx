@@ -42,7 +42,6 @@ const LabourCard = ({ labour, editable, pending, onSave }: Props) => {
         })
     }, [labour, form])
 
-    /* What the customer would be charged as the form stands; the backend computes the real one. */
     const preview = fixed ? (rate ?? 0) : (rate ?? 0) * (hours ?? 0)
 
     return (
@@ -55,7 +54,6 @@ const LabourCard = ({ labour, editable, pending, onSave }: Props) => {
                 onSave({
                     labourPricingMode: values.fixed ? 'FIXED' : 'HOURLY',
                     labourRate: values.labourRate,
-                    // Hours price nothing under a flat price, and a stale number would only mislead.
                     labourHours: values.fixed ? undefined : (values.labourHours ?? 0),
                 })
             }
@@ -63,7 +61,6 @@ const LabourCard = ({ labour, editable, pending, onSave }: Props) => {
             <Form.Item name={'fixed'} valuePropName={'checked'} style={{ marginBottom: 12 }}>
                 <Checkbox
                     onChange={(event) =>
-                        /* The other mode's number is not this mode's number: ask for it again. */
                         form.setFieldsValue({
                             labourRate:
                                 event.target.checked === (labour.pricingMode === 'FIXED') ? labour.rate : undefined,

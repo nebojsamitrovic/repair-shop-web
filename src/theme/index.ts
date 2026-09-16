@@ -12,7 +12,6 @@ export const palette = {
     textSecondary: '#6e6e73',
     textTertiary: '#86868b',
 
-    /* Hairlines, not lines: separation comes from spacing rather than from strokes. */
     border: 'rgba(0, 0, 0, 0.08)',
     borderStrong: 'rgba(0, 0, 0, 0.14)',
 
@@ -55,7 +54,6 @@ export const theme: ThemeConfig = {
         controlHeightLG: 44,
         controlHeightSM: 28,
 
-        /* A hint of depth, never a drop. */
         boxShadow: '0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.04)',
         boxShadowSecondary: '0 4px 24px rgba(0, 0, 0, 0.08)',
         boxShadowTertiary: '0 1px 2px rgba(0, 0, 0, 0.04)',

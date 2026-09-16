@@ -14,9 +14,7 @@ const Layout = () => {
             <AntLayout>
                 <Header collapsed={collapsed} onToggle={() => setCollapsed((value) => !value)} />
                 <AntLayout.Content style={{ padding: '28px 32px 48px' }}>
-                    {/* Content stays readable on a wide monitor rather than stretching edge to edge. */}
                     <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-                        {/* Screens are split per route; the shell stays put while a chunk arrives. */}
                         <Suspense fallback={<Skeleton active />}>
                             <Outlet />
                         </Suspense>

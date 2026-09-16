@@ -85,8 +85,6 @@ const LogoCard = ({ editable }: Props) => {
                         <Upload
                             accept={ACCEPTED}
                             showUploadList={false}
-                            /* Rejected here rather than after a pointless round trip; the backend
-                               checks the same two things again and is the authority. */
                             beforeUpload={(file) => {
                                 if (file.size > MAX_BYTES) {
                                     message.error(t('garage.logo.too_large'))

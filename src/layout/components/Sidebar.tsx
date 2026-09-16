@@ -52,7 +52,6 @@ const Sidebar = ({ collapsed }: { collapsed: boolean }) => {
 
     const tenant = user?.tenant
 
-    /* The menu filters itself: an entry whose permission the user lacks is never rendered. */
     const items: ItemType<MenuItemType>[] = navigation
         .map((group) => {
             const visible = group.items.filter((item) => canAny(item.route.permissions))
@@ -77,8 +76,6 @@ const Sidebar = ({ collapsed }: { collapsed: boolean }) => {
 
     return (
         <Layout.Sider collapsible collapsed={collapsed} trigger={null} width={236}>
-            {/* The garage's own mark where it has one; its name where it does not. Neither is the
-                product's name: the people using this work here, and this is their shop. */}
             <div
                 style={{
                     height: 52,

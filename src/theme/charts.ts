@@ -8,7 +8,6 @@ import { palette } from '.'
 export const chart = {
     series: ['#0071e3', '#eb6834'] as const,
 
-    /* One-step-off-surface, hairline and solid: present enough to read a value against, no more. */
     grid: 'rgba(0, 0, 0, 0.08)',
     axis: palette.textTertiary,
     label: palette.textSecondary,

@@ -38,7 +38,6 @@ const ServiceBookCard = ({ vehicleId, customerEmail, onOpenOrder }: Props) => {
         queryFn: async () => await vehiclesApi.serviceBook(vehicleId),
     })
 
-    /* The PDF opens in a tab; the browser's own viewer prints it. */
     const print = async (lang?: string) => {
         setPrinting(true)
         try {

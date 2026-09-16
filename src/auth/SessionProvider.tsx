@@ -53,7 +53,6 @@ const SessionProvider = ({ children }: { children: ReactNode }) => {
         queryClient.clear()
     }, [queryClient])
 
-    /* When a token can no longer be refreshed there is nothing left to do but sign out. */
     useEffect(() => {
         setSessionLostHandler(() => void signOut())
     }, [signOut])

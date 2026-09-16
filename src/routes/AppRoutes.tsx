@@ -42,7 +42,6 @@ const AppRoutes = () => {
     const location = useLocation()
     const { status } = useSession()
 
-    /* The tab title comes from the same registry the router and the sidebar read. */
     useEffect(() => {
         const matched = Object.values(Routes).find((route) => matchPath(route.path, location.pathname))
         if (matched) document.title = `${t(matched.pageTitle)} · RepairShop OS`
@@ -65,7 +64,6 @@ const AppRoutes = () => {
         )
     }
 
-    /* Verified by Firebase but no application account yet: onboarding is the only way forward. */
     if (status === 'needs-bootstrap') {
         return (
             <RouterRoutes>
@@ -77,7 +75,6 @@ const AppRoutes = () => {
 
     return (
         <RouterRoutes>
-            {/* Inside the shell, so a chunk loading shows in the content area rather than blanking the page. */}
             <Route element={<Layout />}>
                 <Route element={<ProtectedRoute permissions={Routes.Dashboard.permissions} />}>
                     <Route path={Routes.Dashboard.path} element={<Dashboard />} />
@@ -126,7 +123,6 @@ const AppRoutes = () => {
 
                 <Route path={Routes.Forbidden.path} element={<ErrorPage status={'403'} />} />
                 <Route path={Routes.NotFound.path} element={<ErrorPage status={'404'} />} />
-                {/* Straight from the login form or onboarding: home, not a 404 for a path that no longer applies. */}
                 <Route path={'/'} element={<Home />} />
                 <Route path={Routes.Login.path} element={<Home />} />
                 <Route path={Routes.Onboarding.path} element={<Home />} />

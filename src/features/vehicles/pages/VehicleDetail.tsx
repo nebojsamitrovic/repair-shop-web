@@ -194,7 +194,6 @@ const VehicleDetail = () => {
                     />
                 </Col>
                 <Col xs={24}>
-                    {/* What the customer is handed: the work that is actually finished. */}
                     <ServiceBookCard
                         vehicleId={summary.id}
                         customerEmail={customer.email}

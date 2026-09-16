@@ -28,7 +28,6 @@ const useDirectory = () => {
         staleTime: 5 * 60_000,
     })
 
-    /* Only colleagues holding MECHANIC can be handed work; the backend refuses anybody else. */
     const mechanics = useQuery({
         queryKey: ['directory', 'mechanics'],
         queryFn: async () =>

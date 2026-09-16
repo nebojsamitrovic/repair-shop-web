@@ -99,7 +99,6 @@ const ServiceOrderDrawer = ({ orderId, onClose }: Props) => {
         'workshop.saved'
     )
 
-    /* Finished work is invoiced, not quoted: the customer is paying it, not weighing it up. */
     const finished = detail?.summary.status === 'DONE'
     const documentName = t(finished ? 'workshop.invoice' : 'workshop.quote')
 
@@ -112,7 +111,6 @@ const ServiceOrderDrawer = ({ orderId, onClose }: Props) => {
         onError: (error) => message.error(error.message),
     })
 
-    /* The PDF opens in a tab; the browser's own viewer prints it. */
     const printDocument = async (lang?: string) => {
         setPrinting(true)
         try {
