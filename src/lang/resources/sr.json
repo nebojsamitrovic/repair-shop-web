@@ -175,7 +175,10 @@
         "part": "Deo",
         "labour_price": "Cena rada",
         "date": "Datum",
-        "note": "Napomena"
+        "note": "Napomena",
+        "time": "Vreme",
+        "duration_minutes": "Trajanje (min)",
+        "item": "Stavka"
     },
     "errors": {
         "AUTH_NOT_CONFIGURED": "Backend nema podešene Firebase kredencijale, pa niko ne može da se prijavi.",
@@ -235,6 +238,12 @@
         "locale": {
             "sr": "Srpski",
             "en": "Engleski"
+        },
+        "appointment_status": {
+            "SCHEDULED": "Zakazan",
+            "CONVERTED": "Došao",
+            "CANCELLED": "Otkazan",
+            "NO_SHOW": "Nije došao"
         }
     },
     "_replace": [
@@ -257,7 +266,8 @@
         "invitations": "Pozivnice",
         "audit_log": "Istorija izmena",
         "notifications": "Obaveštenja",
-        "dashboard": "Pregled"
+        "dashboard": "Pregled",
+        "appointments": "Termini"
     },
     "pages": {
         "login": {
@@ -318,6 +328,13 @@
         },
         "dashboard": {
             "title": "Pregled"
+        },
+        "appointments": {
+            "title": "Termini",
+            "subtitle": "Ko dolazi i kada"
+        },
+        "public_quote": {
+            "title": "Predračun"
         }
     },
     "login": {
@@ -456,7 +473,9 @@
         "print_document": "Štampaj {{document}}",
         "fixed_price": "Fiksna cena za ceo posao",
         "labour_hint_fixed": "Dogovorena cena posla, bez obzira na to koliko sati potraje.",
-        "labour_unsaved": "Nije sačuvano — na nalogu i dalje stoji {{saved}}."
+        "labour_unsaved": "Nije sačuvano — na nalogu i dalje stoji {{saved}}.",
+        "quote_approved": "Predračun je prihvatio {{by}}, {{at}}, na iznos {{total}}.",
+        "quote_grew": "Nalog sada iznosi {{total}} — više od prihvaćenog."
     },
     "attachments": {
         "title": "Fajlovi",
@@ -562,5 +581,31 @@
         "customer_address": "Adresa klijenta",
         "customer_language": "Jezik klijenta",
         "sent": "Poslato na {{recipient}}."
+    },
+    "appointments": {
+        "book": "Zakaži termin",
+        "edit": "Izmena termina",
+        "hint": "Klijent dobija datum mejlom ako imamo njegovu adresu. Imenovani mehaničar ne može imati dva termina istovremeno.",
+        "mechanic_hint": "Ostavite prazno ako se odlučuje na dan termina.",
+        "booked": "Termin je zakazan.",
+        "updated": "Termin je izmenjen.",
+        "empty_day": "Nema termina za ovaj dan.",
+        "unassigned": "Mehaničar nije dodeljen",
+        "arrived": "Vozilo je stiglo",
+        "no_show": "Nije došao",
+        "cancel": "Otkaži termin",
+        "open_order": "Otvori nalog",
+        "upcoming": "Predstojeći termini",
+        "none_upcoming": "Nema zakazanih termina."
+    },
+    "quote": {
+        "public_title": "Predračun br. {{reference}}",
+        "public_greeting": "Poštovani {{name}}, ovo je predračun za radove na vašem vozilu.",
+        "labour_open": "Evidentira se po obavljenom radu",
+        "your_name": "Vaše ime (nije obavezno)",
+        "approve": "Prihvatam predračun",
+        "approved_title": "Predračun je prihvaćen",
+        "approved_text": "Prihvatio {{by}}, {{at}}, na iznos {{total}}. Servis je obavešten.",
+        "closed": "Ovaj predračun više ne može da se prihvati: radovi su završeni ili je nalog zatvoren."
     }
 }

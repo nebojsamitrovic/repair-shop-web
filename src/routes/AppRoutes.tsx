@@ -1,5 +1,5 @@
 import { Spin } from 'antd'
-import { lazy, useEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { matchPath, Navigate, Route, Routes as RouterRoutes, useLocation } from 'react-router-dom'
 
@@ -17,6 +17,8 @@ import { Routes } from './config'
  */
 const Dashboard = lazy(async () => await import('features/dashboard/pages/Dashboard'))
 const Workshop = lazy(async () => await import('features/workshop/pages/Workshop'))
+const Appointments = lazy(async () => await import('features/appointments/pages/Appointments'))
+const PublicQuote = lazy(async () => await import('features/quotes/pages/PublicQuote'))
 const Vehicles = lazy(async () => await import('features/vehicles/pages/Vehicles'))
 const VehicleDetail = lazy(async () => await import('features/vehicles/pages/VehicleDetail'))
 const VehicleNew = lazy(async () => await import('features/vehicles/pages/VehicleNew'))
@@ -46,6 +48,16 @@ const AppRoutes = () => {
         const matched = Object.values(Routes).find((route) => matchPath(route.path, location.pathname))
         if (matched) document.title = `${t(matched.pageTitle)} · RepairShop OS`
     }, [location.pathname, t])
+
+    if (matchPath(Routes.PublicQuote.path, location.pathname)) {
+        return (
+            <Suspense fallback={<Spin size={'large'} style={{ display: 'block', marginTop: 120 }} />}>
+                <RouterRoutes>
+                    <Route path={Routes.PublicQuote.path} element={<PublicQuote />} />
+                </RouterRoutes>
+            </Suspense>
+        )
+    }
 
     if (status === 'loading') {
         return (
@@ -82,6 +94,7 @@ const AppRoutes = () => {
 
                 <Route element={<ProtectedRoute permissions={Routes.Workshop.permissions} />}>
                     <Route path={Routes.Workshop.path} element={<Workshop />} />
+                    <Route path={Routes.Appointments.path} element={<Appointments />} />
                 </Route>
 
                 <Route element={<ProtectedRoute permissions={Routes.VehicleNew.permissions} />}>

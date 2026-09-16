@@ -1,5 +1,5 @@
 import { MailOutlined, PrinterOutlined } from '@ant-design/icons'
-import { App, Button, Descriptions, Divider, Drawer, Dropdown, Flex, Skeleton, Tag, Typography } from 'antd'
+import { Alert, App, Button, Descriptions, Divider, Drawer, Dropdown, Flex, Skeleton, Tag, Typography } from 'antd'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
@@ -190,6 +190,25 @@ const ServiceOrderDrawer = ({ orderId, onClose }: Props) => {
                 <Skeleton active />
             ) : (
                 <>
+                    {detail.quoteApproval ? (
+                        <Alert
+                            type={detail.quoteApproval.approvedTotal === detail.summary.total ? 'success' : 'warning'}
+                            showIcon
+                            style={{ marginBottom: 16 }}
+                            message={t('workshop.quote_approved', {
+                                by: detail.quoteApproval.approvedBy,
+                                at: formatDateTime(detail.quoteApproval.approvedAt),
+                                total: formatMoney(detail.quoteApproval.approvedTotal, detail.summary.currency),
+                            })}
+                            description={
+                                detail.quoteApproval.approvedTotal === detail.summary.total
+                                    ? null
+                                    : t('workshop.quote_grew', {
+                                          total: formatMoney(detail.summary.total, detail.summary.currency),
+                                      })
+                            }
+                        />
+                    ) : null}
                     <Descriptions column={2} size={'small'} bordered>
                         <Descriptions.Item label={t('fields.vehicle')}>
                             <Link to={pathTo(Routes.Vehicle, { vehicleId: detail.summary.vehicleId })}>

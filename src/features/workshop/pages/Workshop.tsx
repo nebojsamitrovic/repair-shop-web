@@ -2,6 +2,7 @@ import { PlusOutlined } from '@ant-design/icons'
 import { Button, Card, Flex, Segmented, Table, Tag, Typography, type TableProps } from 'antd'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useSearchParams } from 'react-router-dom'
 
 import { SERVICE_TYPES, type ServiceOrderStatus, type ServiceOrderSummary } from 'api/types'
 import { ErrorBlock, PageHeader, ProtectedComponent } from 'components'
@@ -27,7 +28,9 @@ const Workshop = () => {
     const [scope, setScope] = useState<Scope>('open')
     const [type, setType] = useState<string>('ALL')
     const [opening, setOpening] = useState(false)
-    const [openOrderId, setOpenOrderId] = useState<string>()
+    const [searchParams, setSearchParams] = useSearchParams()
+    const openOrderId = searchParams.get('order') ?? undefined
+    const setOpenOrderId = (orderId?: string) => setSearchParams(orderId ? { order: orderId } : {}, { replace: true })
 
     const { data, isFetching, error } = useServiceOrdersQuery({
         openOnly: scope !== 'all',

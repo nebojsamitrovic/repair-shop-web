@@ -4,6 +4,7 @@ export type EnumGroup =
     | 'fuel_type'
     | 'service_type'
     | 'service_order_status'
+    | 'appointment_status'
     | 'attachment_kind'
     | 'labour_pricing_mode'
     | 'locale'

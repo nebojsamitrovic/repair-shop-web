@@ -175,7 +175,10 @@
         "part": "Part",
         "labour_price": "Labour price",
         "date": "Date",
-        "note": "Note"
+        "note": "Note",
+        "time": "Time",
+        "duration_minutes": "Duration (min)",
+        "item": "Item"
     },
     "errors": {
         "AUTH_NOT_CONFIGURED": "The backend has no Firebase credentials configured, so nobody can sign in.",
@@ -235,6 +238,12 @@
         "locale": {
             "sr": "Serbian",
             "en": "English"
+        },
+        "appointment_status": {
+            "SCHEDULED": "Scheduled",
+            "CONVERTED": "Came in",
+            "CANCELLED": "Cancelled",
+            "NO_SHOW": "No show"
         }
     },
     "_replace": [
@@ -254,7 +263,8 @@
         "invitations": "Invitations",
         "audit_log": "Audit log",
         "notifications": "Notifications",
-        "dashboard": "Dashboard"
+        "dashboard": "Dashboard",
+        "appointments": "Appointments"
     },
     "pages": {
         "login": {
@@ -315,6 +325,13 @@
         },
         "dashboard": {
             "title": "Dashboard"
+        },
+        "appointments": {
+            "title": "Appointments",
+            "subtitle": "Who is coming in, and when"
+        },
+        "public_quote": {
+            "title": "Quote"
         }
     },
     "login": {
@@ -453,7 +470,9 @@
         "print_document": "Print {{document}}",
         "fixed_price": "Fixed price for the whole job",
         "labour_hint_fixed": "The price agreed for the job, whatever the hours turn out to be.",
-        "labour_unsaved": "Not saved yet — the order still carries {{saved}}."
+        "labour_unsaved": "Not saved yet — the order still carries {{saved}}.",
+        "quote_approved": "Quote accepted by {{by}} on {{at}} at {{total}}.",
+        "quote_grew": "The order now comes to {{total}} — more than what was accepted."
     },
     "attachments": {
         "title": "Files",
@@ -559,5 +578,31 @@
         "customer_address": "The customer's address",
         "customer_language": "The customer's language",
         "sent": "Sent to {{recipient}}."
+    },
+    "appointments": {
+        "book": "Book a car in",
+        "edit": "Edit booking",
+        "hint": "The customer gets the date by email if we have their address. A named mechanic cannot be double-booked.",
+        "mechanic_hint": "Leave empty to decide on the day.",
+        "booked": "Booked.",
+        "updated": "Booking updated.",
+        "empty_day": "Nothing booked for this day.",
+        "unassigned": "No mechanic yet",
+        "arrived": "The car is here",
+        "no_show": "Did not show up",
+        "cancel": "Cancel booking",
+        "open_order": "Open the order",
+        "upcoming": "Upcoming appointments",
+        "none_upcoming": "Nothing booked."
+    },
+    "quote": {
+        "public_title": "Quote no. {{reference}}",
+        "public_greeting": "Hello {{name}}, here is what the work on your car would come to.",
+        "labour_open": "To be recorded as the work is done",
+        "your_name": "Your name (optional)",
+        "approve": "Accept the quote",
+        "approved_title": "Quote accepted",
+        "approved_text": "Accepted by {{by}} on {{at}} at {{total}}. The garage has been told.",
+        "closed": "This quote can no longer be accepted; the work is finished or the order was closed."
     }
 }

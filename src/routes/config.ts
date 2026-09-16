@@ -11,6 +11,7 @@ export const Routes = {
     Dashboard: { path: '/dashboard', pageTitle: 'pages.dashboard.title', permissions: ['dashboard:read'] },
 
     Workshop: { path: '/workshop', pageTitle: 'pages.workshop.title', permissions: ['service:read'] },
+    Appointments: { path: '/appointments', pageTitle: 'pages.appointments.title', permissions: ['service:read'] },
 
     Vehicles: { path: '/vehicles', pageTitle: 'pages.vehicles.title', permissions: ['vehicle:read'] },
     VehicleNew: { path: '/vehicles/new', pageTitle: 'pages.vehicle_new.title', permissions: ['vehicle:create'] },
@@ -29,6 +30,9 @@ export const Routes = {
     Users: { path: '/settings/users', pageTitle: 'pages.users.title', permissions: ['user:read'] },
     Invitations: { path: '/settings/invitations', pageTitle: 'pages.invitations.title', permissions: ['user:read'] },
     AuditLog: { path: '/settings/audit-log', pageTitle: 'pages.audit_log.title', permissions: ['audit:read'] },
+
+    /** Reached from a link in an email, signed in or not. */
+    PublicQuote: { path: '/q/:token', pageTitle: 'pages.public_quote.title', permissions: [] },
 
     Forbidden: { path: '/403', pageTitle: 'pages.forbidden.title', permissions: [] },
     NotFound: { path: '/404', pageTitle: 'pages.not_found.title', permissions: [] },

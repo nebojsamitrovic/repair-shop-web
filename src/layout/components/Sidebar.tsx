@@ -1,5 +1,6 @@
 import {
     BookOutlined,
+    CalendarOutlined,
     CarOutlined,
     DashboardOutlined,
     HistoryOutlined,
@@ -24,6 +25,7 @@ import { navigation, type NavigationItem } from '../navigation'
 const icons: Record<NavigationItem['icon'], ReactNode> = {
     dashboard: <DashboardOutlined />,
     tool: <ToolOutlined />,
+    calendar: <CalendarOutlined />,
     car: <CarOutlined />,
     team: <TeamOutlined />,
     book: <BookOutlined />,

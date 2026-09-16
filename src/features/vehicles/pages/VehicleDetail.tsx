@@ -22,6 +22,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 
 import type { CreateVehicleRequest, ServiceOrderStatus, ServiceOrderSummary, UpdateVehicleRequest } from 'api/types'
 import { ErrorBlock, PageHeader, ProtectedComponent } from 'components'
+import UpcomingCard from 'features/appointments/components/UpcomingCard'
 import OpenOrderModal from 'features/workshop/components/OpenOrderModal'
 import ServiceOrderDrawer from 'features/workshop/components/ServiceOrderDrawer'
 import { useMutation, useQuery } from 'hooks'
@@ -215,7 +216,10 @@ const VehicleDetail = () => {
                     </Card>
                 </Col>
                 <Col xs={24} lg={10}>
-                    <OwnersCard vehicleId={summary.id} currentCustomerId={customer.id} owners={owners} />
+                    <Flex vertical gap={16}>
+                        <UpcomingCard vehicleId={summary.id} />
+                        <OwnersCard vehicleId={summary.id} currentCustomerId={customer.id} owners={owners} />
+                    </Flex>
                 </Col>
             </Row>
 

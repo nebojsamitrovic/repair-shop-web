@@ -318,6 +318,38 @@ export interface ServiceOrderDetail {
     partsTotal: number
     parts: ServicePart[]
     attachments: ServiceAttachment[]
+    /** Absent until the customer accepts the quote from the link in their email. */
+    quoteApproval?: QuoteApproval | null
+}
+
+export interface QuoteApproval {
+    approvedAt: string
+    approvedBy: string
+    /** The total as it stood then; compare with the order's total. */
+    approvedTotal: number
+}
+
+/** The quote as the customer sees it from the link in their email. */
+export interface PublicQuote {
+    garageName: string
+    garagePhone?: string | null
+    garageEmail?: string | null
+    reference: string
+    customerName?: string | null
+    language: Locale
+    vehicleLabel: string
+    registrationPlate: string
+    type: ServiceType
+    description?: string | null
+    mileage?: number | null
+    labour: Labour
+    parts: ServicePart[]
+    partsTotal: number
+    total: number
+    currency: string
+    status: ServiceOrderStatus
+    canApprove: boolean
+    approval?: QuoteApproval | null
 }
 
 export interface OpenServiceOrderRequest {
@@ -401,6 +433,58 @@ export interface AddAttachmentRequest {
     originalName?: string
     contentType: string
     sizeBytes: number
+}
+
+/* ---------- appointments ---------- */
+
+export const APPOINTMENT_STATUSES = ['SCHEDULED', 'CONVERTED', 'CANCELLED', 'NO_SHOW'] as const
+export type AppointmentStatus = (typeof APPOINTMENT_STATUSES)[number]
+
+export interface Appointment {
+    id: string
+    vehicleId: string
+    vehicleLabel?: string | null
+    registrationPlate?: string | null
+    customerId?: string | null
+    customerName?: string | null
+    customerPhone?: string | null
+    locationId: string
+    locationName?: string | null
+    mechanicUserId?: string | null
+    mechanicName?: string | null
+    type: ServiceType
+    status: AppointmentStatus
+    startsAt: string
+    endsAt: string
+    note?: string | null
+    /** The order opened from this booking, once the car came in. */
+    serviceOrderId?: string | null
+}
+
+export interface BookAppointmentRequest {
+    vehicleId: string
+    locationId?: string
+    mechanicUserId?: string
+    type: ServiceType
+    startsAt: string
+    endsAt: string
+    note?: string
+}
+
+export interface UpdateAppointmentRequest {
+    startsAt?: string
+    endsAt?: string
+    locationId?: string
+    mechanicUserId?: string
+    type?: ServiceType
+    note?: string
+}
+
+/** What the desk learns when the car comes in; the rest is on the booking. */
+export interface ArrivalRequest {
+    mileage?: number
+    annualMileage?: number
+    description?: string
 }
 
 /* ---------- notes ---------- */
