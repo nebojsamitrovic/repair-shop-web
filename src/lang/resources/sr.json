@@ -182,7 +182,6 @@
         "part_number": "Kataloški broj",
         "condition": "Stanje",
         "fits": "Odgovara za",
-        "unit_cost": "Nabavna cena",
         "user": "Ko"
     },
     "errors": {
@@ -642,7 +641,6 @@
         "count": "Popis",
         "received_quantity": "Koliko je stiglo",
         "counted_quantity": "Koliko stvarno ima",
-        "cost_hint": "Postaje nabavna cena na evidenciji; prazno je zadržava.",
         "on_shelf": "{{quantity}} na polici",
         "name_placeholder": "Alternator Bosch 120A",
         "fits_hint": "Slobodan tekst za pretragu — marka, model, motor, godišta.",

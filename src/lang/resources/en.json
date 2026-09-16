@@ -182,7 +182,6 @@
         "part_number": "Part number",
         "condition": "Condition",
         "fits": "Fits",
-        "unit_cost": "Cost each",
         "user": "Who"
     },
     "errors": {
@@ -639,7 +638,6 @@
         "count": "Count",
         "received_quantity": "How many came in",
         "counted_quantity": "How many are actually there",
-        "cost_hint": "Becomes the cost on record; leave empty to keep it.",
         "on_shelf": "{{quantity}} on the shelf",
         "name_placeholder": "Alternator Bosch 120A",
         "fits_hint": "Free text for searching — make, model, engine, years.",

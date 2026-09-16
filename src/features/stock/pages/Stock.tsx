@@ -111,13 +111,6 @@ const Stock = () => {
             ),
         },
         {
-            title: t('fields.unit_cost'),
-            dataIndex: 'unitCost',
-            width: 120,
-            align: 'right',
-            render: (value: number | null, row) => (value == null ? '—' : formatMoney(value, row.currency)),
-        },
-        {
             title: t('fields.unit_price'),
             dataIndex: 'unitPrice',
             width: 120,

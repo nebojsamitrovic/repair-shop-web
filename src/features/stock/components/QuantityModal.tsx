@@ -19,7 +19,6 @@ interface Props {
 
 interface QuantityForm {
     quantity: number
-    unitCost?: number
     note?: string
 }
 
@@ -31,9 +30,9 @@ const QuantityModal = ({ item, action, onClose }: Props) => {
     const [form] = Form.useForm<QuantityForm>()
 
     const save = useMutation({
-        mutationFn: async ({ quantity, unitCost, note }: QuantityForm) =>
+        mutationFn: async ({ quantity, note }: QuantityForm) =>
             action === 'receive'
-                ? await stockApi.receive(item?.id ?? '', { quantity, unitCost, note })
+                ? await stockApi.receive(item?.id ?? '', { quantity, note })
                 : await stockApi.count(item?.id ?? '', { counted: quantity, note }),
         onSuccess: async () => {
             message.success(t('stock.updated'))
@@ -45,9 +44,7 @@ const QuantityModal = ({ item, action, onClose }: Props) => {
     useEffect(() => {
         if (!item) return
         form.resetFields()
-        form.setFieldsValue(
-            action === 'receive' ? { quantity: 1, unitCost: item.unitCost ?? undefined } : { quantity: item.quantity }
-        )
+        form.setFieldsValue({ quantity: action === 'receive' ? 1 : item.quantity })
     }, [item, action, form])
 
     const close = () => {
@@ -86,11 +83,6 @@ const QuantityModal = ({ item, action, onClose }: Props) => {
                 >
                     <InputNumber min={action === 'receive' ? 0.01 : 0} style={{ width: '100%' }} autoFocus />
                 </Form.Item>
-                {action === 'receive' ? (
-                    <Form.Item name={'unitCost'} label={t('fields.unit_cost')} extra={t('stock.cost_hint')}>
-                        <InputNumber min={0} step={0.5} style={{ width: '100%' }} />
-                    </Form.Item>
-                ) : null}
                 <Form.Item name={'note'} label={t('fields.note')}>
                     <Input maxLength={2000} />
                 </Form.Item>

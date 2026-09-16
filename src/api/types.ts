@@ -506,7 +506,6 @@ export interface StockItem {
     fits?: string | null
     condition: StockCondition
     quantity: number
-    unitCost?: number | null
     unitPrice: number
     currency: string
     source?: string | null
@@ -535,7 +534,6 @@ export interface CreateStockItemRequest {
     fits?: string
     condition?: StockCondition
     quantity?: number
-    unitCost?: number
     unitPrice: number
     source?: string
     note?: string
@@ -546,7 +544,6 @@ export type UpdateStockItemRequest = Partial<Omit<CreateStockItemRequest, 'quant
 
 export interface ReceiveStockRequest {
     quantity: number
-    unitCost?: number
     note?: string
 }
 

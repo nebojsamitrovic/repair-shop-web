@@ -43,7 +43,6 @@ const StockItemDrawer = ({ open, item, onClose }: Props) => {
                 partNumber: item.partNumber ?? undefined,
                 fits: item.fits ?? undefined,
                 condition: item.condition,
-                unitCost: item.unitCost ?? undefined,
                 unitPrice: item.unitPrice,
                 source: item.source ?? undefined,
                 note: item.note ?? undefined,
@@ -120,12 +119,7 @@ const StockItemDrawer = ({ open, item, onClose }: Props) => {
                             </Form.Item>
                         </Col>
                     )}
-                    <Col xs={8}>
-                        <Form.Item name={'unitCost'} label={t('fields.unit_cost')}>
-                            <InputNumber min={0} step={0.5} style={{ width: '100%' }} />
-                        </Form.Item>
-                    </Col>
-                    <Col xs={8}>
+                    <Col xs={item ? 24 : 16}>
                         <Form.Item
                             name={'unitPrice'}
                             label={t('fields.unit_price')}
