@@ -1,6 +1,6 @@
-# RepairShop OS — web
+# Garage Ledger — web
 
-Single-page frontend for the [RepairShop OS backend](../repair-shop-api): the workshop, the
+Single-page frontend for the [Garage Ledger backend](../repair-shop-api): the workshop, the
 customers and their cars, the maintenance reminders and the mechanics' notebook, for car repair
 garages. React 19, TypeScript, Vite, Ant Design 6, TanStack Query, in English and Serbian.
 Firebase signs people in; the backend decides what they may do.

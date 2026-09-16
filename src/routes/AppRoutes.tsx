@@ -47,7 +47,7 @@ const AppRoutes = () => {
 
     useEffect(() => {
         const matched = Object.values(Routes).find((route) => matchPath(route.path, location.pathname))
-        if (matched) document.title = `${t(matched.pageTitle)} · RepairShop OS`
+        if (matched) document.title = `${t(matched.pageTitle)} · Garage Ledger`
     }, [location.pathname, t])
 
     if (matchPath(Routes.PublicQuote.path, location.pathname)) {

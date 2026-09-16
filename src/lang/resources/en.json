@@ -362,7 +362,7 @@
         "headline": "Everything about the car in one place.",
         "subheadline": "Orders, parts, invoices and a service book for every car. When the next service is near, the customer gets a message.",
         "invite_only": "Accounts are created by invitation — ask the owner of your garage for one.",
-        "footnote": "RepairShop OS — software for garages.",
+        "footnote": "Garage Ledger — software for garages.",
         "highlights": {
             "workshop": {
                 "title": "Work orders",

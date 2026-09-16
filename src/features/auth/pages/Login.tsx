@@ -60,7 +60,7 @@ const Login = () => {
                     <Flex align={'center'} gap={10}>
                         <CarOutlined style={{ fontSize: 20 }} />
                         <Typography.Text style={{ color: '#ffffff', fontWeight: 600, letterSpacing: '-0.01em' }}>
-                            RepairShop OS
+                            Garage Ledger
                         </Typography.Text>
                     </Flex>
 
