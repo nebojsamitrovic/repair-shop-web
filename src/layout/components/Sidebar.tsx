@@ -21,7 +21,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 import { useSession } from 'auth/session'
 import { palette } from 'theme'
-import { navigation, type NavigationItem } from '../navigation'
+import { navigation, type NavigationGroup, type NavigationItem } from '../navigation'
 
 const icons: Record<NavigationItem['icon'], ReactNode> = {
     dashboard: <DashboardOutlined />,
@@ -48,6 +48,44 @@ const initials = (name?: string) =>
         .map((word) => word[0]?.toUpperCase() ?? '')
         .join('')
 
+const MiniRail = ({
+    groups,
+    selected,
+    onSelect,
+}: {
+    groups: NavigationGroup[]
+    selected?: string
+    onSelect: (path: string) => void
+}) => {
+    const { t } = useTranslation()
+
+    return (
+        <nav className={'mini-rail'}>
+            {groups.map((group, index) => (
+                <div key={group.key} className={index === 0 ? undefined : 'mini-rail-group'}>
+                    {group.items.map((item) => {
+                        const active = item.route.path === selected
+                        const label = t(item.labelKey)
+                        return (
+                            <button
+                                key={item.key}
+                                type={'button'}
+                                className={`mini-rail-item${active ? ' mini-rail-item-active' : ''}`}
+                                aria-current={active ? 'page' : undefined}
+                                title={label}
+                                onClick={() => onSelect(item.route.path)}
+                            >
+                                <span className={'mini-rail-icon'}>{icons[item.icon]}</span>
+                                <span className={'mini-rail-label'}>{label}</span>
+                            </button>
+                        )
+                    })}
+                </div>
+            ))}
+        </nav>
+    )
+}
+
 const Sidebar = ({ collapsed }: { collapsed: boolean }) => {
     const { t } = useTranslation()
     const navigate = useNavigate()
@@ -56,11 +94,13 @@ const Sidebar = ({ collapsed }: { collapsed: boolean }) => {
 
     const tenant = user?.tenant
 
-    const items: ItemType<MenuItemType>[] = navigation
+    const groups: NavigationGroup[] = navigation
+        .map((group) => ({ ...group, items: group.items.filter((item) => canAny(item.route.permissions)) }))
+        .filter((group) => group.items.length > 0)
+
+    const items: ItemType<MenuItemType>[] = groups
         .map((group) => {
-            const visible = group.items.filter((item) => canAny(item.route.permissions))
-            if (visible.length === 0) return null
-            const children = visible.map((item) => ({
+            const children = group.items.map((item) => ({
                 key: item.route.path,
                 icon: icons[item.icon],
                 label: t(item.labelKey),
@@ -69,39 +109,30 @@ const Sidebar = ({ collapsed }: { collapsed: boolean }) => {
                 ? { key: group.key, label: t(group.labelKey), type: 'group' as const, children }
                 : children
         })
-        .filter((entry) => entry !== null)
         .flat()
 
-    const selected = [...navigation.flatMap((group) => group.items)]
+    const selected = groups
+        .flatMap((group) => group.items)
         .map((item) => item.route.path)
         .filter((path) => location.pathname.startsWith(path))
         .sort((a, b) => b.length - a.length)
-        .slice(0, 1)
+        .at(0)
 
     return (
-        <Layout.Sider collapsible collapsed={collapsed} trigger={null} width={236}>
+        <Layout.Sider collapsible collapsed={collapsed} trigger={null} width={240} collapsedWidth={76}>
             <div
-                style={{
-                    height: 52,
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 10,
-                    paddingInline: collapsed ? 0 : 20,
-                    justifyContent: collapsed ? 'center' : 'flex-start',
-                    color: palette.text,
-                    fontWeight: 600,
-                    fontSize: 15,
-                    letterSpacing: '-0.01em',
-                    overflow: 'hidden',
-                }}
+                className={[
+                    'sidebar-brand',
+                    tenant?.logoUrl ? 'sidebar-brand-logo' : '',
+                    collapsed ? 'sidebar-brand-collapsed' : '',
+                ]
+                    .filter(Boolean)
+                    .join(' ')}
+                style={{ color: palette.sidebarTextStrong }}
                 title={tenant?.name}
             >
                 {tenant?.logoUrl ? (
-                    <img
-                        src={tenant.logoUrl}
-                        alt={tenant.name}
-                        style={{ maxHeight: 28, maxWidth: collapsed ? 32 : 180, objectFit: 'contain' }}
-                    />
+                    <img src={tenant.logoUrl} alt={tenant.name} />
                 ) : (
                     <span
                         style={{
@@ -114,13 +145,19 @@ const Sidebar = ({ collapsed }: { collapsed: boolean }) => {
                     </span>
                 )}
             </div>
-            <Menu
-                mode={'inline'}
-                items={items}
-                selectedKeys={selected}
-                onClick={({ key }) => navigate(key)}
-                style={{ borderInlineEnd: 'none' }}
-            />
+
+            {collapsed ? (
+                <MiniRail groups={groups} selected={selected} onSelect={(path) => navigate(path)} />
+            ) : (
+                <Menu
+                    mode={'inline'}
+                    theme={'dark'}
+                    items={items}
+                    selectedKeys={selected ? [selected] : []}
+                    onClick={({ key }) => navigate(key)}
+                    style={{ borderInlineEnd: 'none' }}
+                />
+            )}
         </Layout.Sider>
     )
 }

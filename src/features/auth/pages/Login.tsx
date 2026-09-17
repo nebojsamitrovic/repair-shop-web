@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next'
 import { signIn } from 'auth/firebase'
 import { useSession } from 'auth/session'
 import LanguageSwitch from 'lang/LanguageSwitch'
-import { palette } from 'theme'
 
 interface LoginForm {
     email: string
@@ -40,7 +39,7 @@ const Login = () => {
     }
 
     return (
-        <Row style={{ minHeight: '100vh', background: palette.canvas }}>
+        <Row style={{ minHeight: '100vh' }}>
             {/*
              * The left half says what this is before anybody signs in. It is typography and one
              * drawing rather than a photograph: nothing here has to be downloaded, and a forecourt

@@ -2,11 +2,14 @@ import type { ThemeConfig } from 'antd'
 
 /** System typography, hairline borders, generous radii, almost no shadow — set once so screens inherit it. */
 export const palette = {
-    canvas: '#f5f5f7',
+    canvas: '#f4f5f9',
     surface: '#ffffff',
-    surfaceMuted: '#fbfbfd',
+    surfaceMuted: '#f7f8fb',
+    surfaceGlass: 'rgba(255, 255, 255, 0.72)',
+    surfaceGlassStrong: 'rgba(255, 255, 255, 0.86)',
 
     accent: '#0071e3',
+    accentSoft: 'rgba(0, 113, 227, 0.1)',
 
     text: '#1d1d1f',
     textSecondary: '#6e6e73',
@@ -14,10 +17,19 @@ export const palette = {
 
     border: 'rgba(0, 0, 0, 0.08)',
     borderStrong: 'rgba(0, 0, 0, 0.14)',
+    borderGlass: 'rgba(255, 255, 255, 0.55)',
 
     success: '#248a3d',
     warning: '#b25000',
     danger: '#d70015',
+
+    sidebar: '#1c1c1e',
+    sidebarText: 'rgba(255, 255, 255, 0.78)',
+    sidebarTextStrong: 'rgba(255, 255, 255, 0.95)',
+    sidebarTextMuted: 'rgba(255, 255, 255, 0.42)',
+    sidebarHoverBg: 'rgba(255, 255, 255, 0.08)',
+    sidebarAccent: '#0a84ff',
+    sidebarSelectedBg: 'rgba(255, 255, 255, 0.15)',
 } as const
 
 const fontStack =
@@ -62,25 +74,38 @@ export const theme: ThemeConfig = {
     },
     components: {
         Layout: {
-            headerBg: 'rgba(255, 255, 255, 0.72)',
+            headerBg: 'transparent',
             headerHeight: 52,
             headerPadding: '0 20px',
-            siderBg: palette.surfaceMuted,
-            bodyBg: palette.canvas,
+            siderBg: 'transparent',
+            bodyBg: 'transparent',
         },
         Menu: {
             itemBg: 'transparent',
             subMenuItemBg: 'transparent',
-            itemSelectedBg: 'rgba(0, 113, 227, 0.1)',
+            itemSelectedBg: palette.accentSoft,
             itemSelectedColor: palette.accent,
             itemHoverBg: 'rgba(0, 0, 0, 0.04)',
             itemColor: palette.text,
-            itemHeight: 36,
+            itemHeight: 40,
             itemMarginInline: 8,
-            itemBorderRadius: 8,
+            itemMarginBlock: 2,
+            itemBorderRadius: 10,
             groupTitleColor: palette.textTertiary,
-            groupTitleFontSize: 11,
-            iconSize: 15,
+            groupTitleFontSize: 13,
+            iconSize: 22,
+            iconMarginInlineEnd: 18,
+            collapsedIconSize: 22,
+
+            darkItemBg: 'transparent',
+            darkSubMenuItemBg: 'transparent',
+            darkItemColor: palette.sidebarText,
+            darkItemHoverBg: palette.sidebarHoverBg,
+            darkItemHoverColor: palette.sidebarTextStrong,
+            darkItemSelectedBg: palette.sidebarSelectedBg,
+            darkItemSelectedColor: palette.sidebarTextStrong,
+            darkGroupTitleColor: palette.sidebarTextMuted,
+            darkPopupBg: 'rgba(40, 40, 44, 0.86)',
         },
         Card: {
             paddingLG: 22,
@@ -98,7 +123,7 @@ export const theme: ThemeConfig = {
         },
         Button: { fontWeight: 500, primaryShadow: 'none', defaultShadow: 'none', dangerShadow: 'none' },
         Input: { paddingBlock: 6 },
-        Select: { optionSelectedBg: 'rgba(0, 113, 227, 0.1)' },
+        Select: { optionSelectedBg: palette.accentSoft },
         Tag: { defaultBg: 'rgba(0, 0, 0, 0.05)', defaultColor: palette.textSecondary },
         Statistic: { titleFontSize: 13, contentFontSize: 26 },
         Descriptions: { labelBg: palette.surfaceMuted },

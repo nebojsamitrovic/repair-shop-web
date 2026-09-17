@@ -6,7 +6,6 @@ import type { BootstrapRequest, CurrentUser } from 'api/types'
 import { useSession } from 'auth/session'
 import { ErrorBlock } from 'components'
 import { useMutation } from 'hooks'
-import { palette } from 'theme'
 
 /**
  * Where a Firebase identity becomes an application account: bootstrap either joins the garage
@@ -22,11 +21,7 @@ const Onboarding = () => {
     })
 
     return (
-        <Flex
-            align={'center'}
-            justify={'center'}
-            style={{ minHeight: '100vh', background: palette.canvas, padding: 24 }}
-        >
+        <Flex align={'center'} justify={'center'} style={{ minHeight: '100vh', padding: 24 }}>
             <Card style={{ width: 480 }} styles={{ body: { padding: 32 } }}>
                 <Typography.Title level={3} style={{ marginTop: 0, marginBottom: 4 }}>
                     {t('onboarding.title')}

@@ -1,12 +1,13 @@
 import { Layout as AntLayout, Skeleton } from 'antd'
 import { Suspense, useState } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 
 import Header from './Header'
 import Sidebar from './Sidebar'
 
 const Layout = () => {
     const [collapsed, setCollapsed] = useState(false)
+    const { pathname } = useLocation()
 
     return (
         <AntLayout style={{ minHeight: '100vh' }}>
@@ -14,7 +15,7 @@ const Layout = () => {
             <AntLayout>
                 <Header collapsed={collapsed} onToggle={() => setCollapsed((value) => !value)} />
                 <AntLayout.Content style={{ padding: '28px 32px 48px' }}>
-                    <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+                    <div key={pathname} className={'page-enter'} style={{ maxWidth: 1280, margin: '0 auto' }}>
                         <Suspense fallback={<Skeleton active />}>
                             <Outlet />
                         </Suspense>

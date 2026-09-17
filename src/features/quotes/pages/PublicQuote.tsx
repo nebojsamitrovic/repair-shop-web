@@ -21,7 +21,6 @@ import { ErrorBlock } from 'components'
 import { useMutation, useQuery } from 'hooks'
 import { isLanguage, setLanguage } from 'lang'
 import useEnumLabel from 'lang/useEnumLabel'
-import { palette } from 'theme'
 import { formatDateTime, formatMoney, formatNumber } from 'utils/format'
 import { publicQuoteApi } from '../utils'
 
@@ -70,7 +69,7 @@ const PublicQuote = () => {
     ]
 
     return (
-        <div style={{ minHeight: '100vh', background: palette.canvas, padding: '32px 16px' }}>
+        <div style={{ minHeight: '100vh', padding: '32px 16px' }}>
             <div style={{ maxWidth: 720, margin: '0 auto' }}>
                 {quote.error ? (
                     <Card>
